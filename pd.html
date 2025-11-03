@@ -7,11 +7,22 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/tabletop@1.6.0/tabletop.min.js"></script>
 </head>
+
+
+
 <body>
   <!-- SAME HEADER -->
+  <!-- HEADER -->
   <header>
     <div class="header-container">
       <img src="images/logochat.png" alt="CSChE Logo" class="logo" />
+
+      <!-- NEW: mobile-only U of T line -->
+      <div class="mobile-uoft" aria-hidden="true">
+        <span>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING:</span><br>
+        <span>UNIVERSITY OF TORONTO</span>
+      </div>
+
       <div class="header-text">
         <h1>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING</h1>
         <h2>UNIVERSITY OF TORONTO CHAPTER</h2>
@@ -132,13 +143,63 @@
   <footer class="footer">
     <p>Connect with us:</p>
     <div class="social-icons">
-      <a href="https://instagram.com/yourhandle" target="_blank">
-        <img src="images/instagram.webp" alt="Instagram" />
-      </a>
-      <a href="https://linkedin.com/in/yourhandle" target="_blank">
-        <img src="images/linkedin.webp" alt="LinkedIn" />
-      </a>
+      <a href="https://instagram.com/csche_uoft" target="_blank"><img src="images/instagram.webp" alt="Instagram" /></a>
+      <a href="https://www.linkedin.com/company/cscheuoft/" target="_blank"><img src="images/linkedin.webp" alt="LinkedIn" /></a>
     </div>
   </footer>
+
+<script>
+(function () {
+  const bp = 768;
+  const root   = document.documentElement;
+  const header = document.querySelector('.header-container');
+  const menuBar= document.querySelector('.main-menu');
+  const list   = menuBar ? menuBar.querySelector('ul') : null;
+
+  // If the DOM isn't ready, try again after load
+  if (!header || !menuBar || !list) {
+    window.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+
+  function init() {
+    const headerEl = document.querySelector('.header-container');
+    const menuEl   = document.querySelector('.main-menu');
+    const ul       = menuEl ? menuEl.querySelector('ul') : null;
+    if (!headerEl || !menuEl || !ul) return; // leave desktop/menu intact
+
+    root.classList.add('nav-ready');          // enables mobile dropdown CSS
+    if (!ul.id) ul.id = 'csche-nav';
+
+    let btn;
+
+    function mount() {
+      if (window.innerWidth <= bp) {
+        if (!btn) {
+          btn = document.createElement('button');
+          btn.className = 'menu-toggle';
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-controls', ul.id);
+          // three-bar hamburger
+          btn.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
+          headerEl.appendChild(btn);
+          btn.addEventListener('click', () => {
+            const open = root.classList.toggle('nav-open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          });
+        }
+      } else {
+        root.classList.remove('nav-open');
+        if (btn) { btn.remove(); btn = null; }
+      }
+    }
+
+    mount();
+    window.addEventListener('resize', mount, { passive: true });
+  }
+})();
+</script>
+
 </body>
 </html>

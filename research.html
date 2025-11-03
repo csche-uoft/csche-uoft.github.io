@@ -6,11 +6,59 @@
   <title>Research Opportunities | CSChE UofT</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
+<script>
+(function () {
+  const bp = 768; // behave as "mobile" at this width and below
+  const root = document.documentElement;
+  const header = document.querySelector('.header-container');
+  const menuBar = document.querySelector('.main-menu');
+  if (!header || !menuBar) return;
+
+  let btn;
+
+  function setState() {
+    if (window.innerWidth <= bp) {
+      if (!btn) {
+        btn = document.createElement('button');
+        btn.className = 'menu-toggle';
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-controls', 'csche-nav');
+        btn.innerHTML = 'Menu';
+        // ensure the UL has an id for aria-controls
+        const ul = menuBar.querySelector('ul');
+        if (ul && !ul.id) ul.id = 'csche-nav';
+        // put the button at the right end of the header bar
+        header.appendChild(btn);
+        btn.addEventListener('click', () => {
+          const open = root.classList.toggle('nav-open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+    } else {
+      root.classList.remove('nav-open');
+      if (btn) { btn.remove(); btn = null; }
+    }
+  }
+
+  setState();
+  window.addEventListener('resize', setState, { passive: true });
+})();
+</script>
+
+
 <body class="research-page">
   <!-- HEADER -->
   <header>
     <div class="header-container">
       <img src="images/logochat.png" alt="CSChE Logo" class="logo" />
+
+      <!-- NEW: mobile-only U of T line -->
+      <div class="mobile-uoft" aria-hidden="true">
+        <span>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING:</span><br>
+        <span>UNIVERSITY OF TORONTO</span>
+      </div>
+
       <div class="header-text">
         <h1>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING</h1>
         <h2>UNIVERSITY OF TORONTO CHAPTER</h2>
@@ -256,8 +304,8 @@
   <footer class="footer">
     <p>Connect with us:</p>
     <div class="social-icons">
-      <a href="https://instagram.com/yourhandle" target="_blank"><img src="images/instagram.webp" alt="Instagram" /></a>
-      <a href="https://linkedin.com/in/yourhandle" target="_blank"><img src="images/linkedin.webp" alt="LinkedIn" /></a>
+      <a href="https://instagram.com/csche_uoft" target="_blank"><img src="images/instagram.webp" alt="Instagram" /></a>
+      <a href="https://www.linkedin.com/company/cscheuoft/" target="_blank"><img src="images/linkedin.webp" alt="LinkedIn" /></a>
     </div>
   </footer>
 </body>

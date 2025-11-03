@@ -273,6 +273,13 @@ header {
   margin-top: 0.5rem;
 }
 
+.footer .social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
 .footer .social-icons a img {
   width: 30px;
   height: 30px;
@@ -565,4 +572,466 @@ header {
   font-size: 1.2rem;
   font-weight: 500;
   color: #333;
+}
+
+/* ===== CSChE responsive fixes (drop-in) ===== */
+
+/* 0) Safer defaults on small screens */
+html { font-size: clamp(14px, 1.15vw + 10px, 16px); -webkit-text-size-adjust: 100%; }
+body { overflow-x: hidden; }
+
+/* 1) Images/embeds never overflow */
+img, svg, video, iframe, canvas { max-width: 100%; height: auto; display: block; }
+
+/* 2) Header: allow wrapping & scale logo on narrow screens */
+.header-container { flex-wrap: wrap; padding-inline: 1rem; }
+.logo { height: clamp(52px, 5vw + 28px, 80px); }
+
+/* 3) Menu: allow wrapping, shrink gaps on smaller widths */
+.main-menu ul { flex-wrap: wrap; gap: clamp(0.75rem, 3vw, 2rem); }
+
+/* Stack the menu vertically on phones */
+@media (max-width: 768px) {
+  .main-menu ul { display: flex; flex-direction: column; align-items: center; }
+  .main-menu { padding: 0.5rem 1rem; }
+}
+
+/* 4) Carousel: replace 100vw (causes sideways scroll) with 100% and use fluid height */
+.carousel { width: 100%; height: clamp(220px, 40vw, 450px); }
+.carousel-slide { width: 100%; }
+.carousel-slide img { width: 100%; height: clamp(220px, 40vw, 450px); object-fit: cover; }
+.carousel-slide .overlay { width: 100%; padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 2rem); }
+@media (max-width: 480px) {
+  .carousel-slide .overlay { font-size: 1.1rem; }
+}
+
+/* 5) “About” and big headings: scale down gently on mobile */
+.about-section h2,
+.pd-events h2,
+.research-page .pd-events h2,
+.ccec-page .pd-events h2 {
+  font-size: clamp(1.5rem, 3.5vw + 1rem, 2.5rem);
+}
+
+/* Buttons already flex; just ensure they don’t overflow tiny screens */
+.about-section .button-group,
+.pd-button-group { flex-wrap: wrap; }
+.about-section .button { flex: 1 1 140px; max-width: 180px; }
+
+/* 6) Internship database table: keep sticky header, avoid overflow on phones */
+#internshipTable { table-layout: fixed; }
+#internshipTable thead,
+#internshipTable tbody tr { width: 100%; }
+#internshipTable thead { width: 100%; } /* override calc(100% - 1em) on narrow screens */
+
+@media (max-width: 600px) {
+  #internshipTable th, #internshipTable td { padding: 0.6rem 0.6rem; }
+  #internshipTable tbody { max-height: 260px; }
+}
+
+/* 7) PD Events: make the 75%/25% split stack on small screens */
+@media (max-width: 900px) {
+  .event-info, .event-image { width: 100%; padding-right: 0; }
+  .pd-table tr { display: block; }
+  .pd-table td { display: block; }
+  .event-image { text-align: center; padding-top: 0.5rem; }
+}
+
+/* 8) What-we-do image: keep centered and fluid */
+.what-we-do-image { padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 3vw, 2rem) clamp(2rem, 5vw, 4rem); }
+
+/* 9) Footer icons: prevent overflow by shrinking a touch on tiny screens */
+@media (max-width: 420px) {
+  .footer .social-icons a img { width: 26px; height: 26px; }
+}
+
+/* 10) Typography: keep hierarchy but avoid huge titles on phones */
+.header-text h1 { font-size: clamp(1.25rem, 2.2vw + 0.9rem, 1.8rem); }
+.header-text h2 { font-size: clamp(0.95rem, 1.6vw + 0.6rem, 1.2rem); }
+
+/* 11) General last-line defense for fixed widths/heights on small screens */
+@media (max-width: 768px) {
+  [style*="width:"], .fixed, .fixed-width { width: 100% !important; max-width: 100% !important; }
+  [style*="min-width:"], .minw { min-width: 0 !important; }
+  [style*="height:"], .fixed-height { height: auto !important; max-height: 100% !important; }
+}
+
+/* 12) Safer table scrolling container (use if needed)
+   Wrap any wide table in: <div class="table-wrap">…table…</div> */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ===== Mobile-only header + dropdown nav (desktop unchanged) ===== */
+
+/* keep header layout flexible */
+.header-container { justify-content: space-between; }
+
+/* mobile tweaks */
+@media (max-width: 768px) {
+  /* compact header row */
+  header { padding: 0.75rem 1rem; }
+  .header-container { gap: 0.75rem; }
+
+  /* smaller logo */
+  .logo { height: 44px; width: auto; }
+
+  /* 2-line title next to logo */
+  .header-text {
+    display: grid;
+    align-content: center;
+    text-align: left;
+  }
+  .header-text h1,
+  .header-text h2 {
+    margin: 0;
+    line-height: 1.15;
+    letter-spacing: 0.06em; /* reduce big spacing so it fits */
+    text-transform: uppercase;
+  }
+  .header-text h1 { font-size: 1rem; font-weight: 700; }
+  .header-text h2 { font-size: 0.85rem; opacity: 0.9; }
+
+  /* turn top menu into dropdown */
+  .main-menu { position: relative; padding: 0.25rem 1rem; }
+  .main-menu ul {
+    display: none;                    /* hidden by default on phone */
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    background: #fff;
+    margin: 0; padding: 0.5rem 0.75rem 0.75rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,.12);
+    border-radius: 8px;
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: stretch;
+    z-index: 1000;
+  }
+  /* when open, show the list */
+  .nav-open .main-menu ul { display: flex; }
+
+  /* menu toggle button (injected by JS) */
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    background: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .menu-toggle:focus-visible { outline: 3px solid #4d90fe; outline-offset: 2px; }
+
+  /* dropdown link sizing */
+  .main-menu ul li a { font-size: 1rem; padding: 0.45rem 0.35rem; display: block; }
+
+  /* keep hover dropdowns from desktop from popping */
+  .main-menu ul li:hover > ul.dropdown { display: none; }
+  .main-menu ul li ul.dropdown { position: static; box-shadow: none; padding: 0; }
+}
+
+/* wider than mobile = your current desktop menu untouched */
+
+/* === Fix: only hide mobile menu if JS has prepared it === */
+@media (max-width: 768px) {
+  /* Default on phones = visible (from your earlier rule).
+     When JS adds .nav-ready to <html>, THEN hide and turn into dropdown. */
+  .nav-ready .main-menu ul {
+    display: none;
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    background: #fff;
+    margin: 0; padding: 0.5rem 0.75rem 0.75rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,.12);
+    border-radius: 8px;
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: stretch;
+    z-index: 1000;
+  }
+  .nav-ready.nav-open .main-menu ul { display: flex; }
+
+  /* keep the button styling */
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    background: #fff;
+    font: inherit; font-weight: 600; cursor: pointer;
+  }
+  .menu-toggle:focus-visible { outline: 3px solid #4d90fe; outline-offset: 2px; }
+}
+
+/* Mobile hamburger menu button */
+@media (max-width: 768px) {
+  .menu-toggle {
+    margin-left: auto; /* push to right end of header row */
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  /* Hamburger icon lines */
+  .menu-toggle .bar {
+    display: block;
+    width: 24px;
+    height: 3px;
+    margin: 4px 0;
+    background-color: white; /* match header text color */
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  /* Dropdown menu panel */
+  .nav-ready .main-menu ul {
+    display: none;
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    background: #fff;
+    margin: 0;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 1000;
+  }
+  .nav-ready.nav-open .main-menu ul { display: flex; }
+
+  .main-menu ul li a {
+    display: block;
+    padding: 0.5rem 0.25rem;
+    font-size: 1rem;
+    color: #333;
+  }
+}
+
+/* --- Fix hamburger stacking on phones only --- */
+@media (max-width: 768px) {
+  .menu-toggle {
+    /* make the three bars stack vertically */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end;      /* keeps it tight on the right edge */
+    gap: 4px;                   /* space between bars */
+    margin-left: auto;          /* push to right of header row */
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+  }
+  .menu-toggle .bar {
+    display: block !important;
+    width: 26px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+    margin: 0;                  /* prevent accidental horizontal spacing */
+  }
+}
+
+/* === Mobile header: logo left, hamburger right; title on two lines below === */
+@media (max-width: 768px) {
+  /* top bar spacing */
+  header { padding: 0.75rem 1rem 1rem; }
+
+  /* turn header into two rows:
+     Row 1: [logo] [spacer] [hamburger]
+     Row 2: [title spans full width] */
+  .header-container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    padding-inline: 0; /* keep your max-width centering intact */
+  }
+
+  /* Row 1: logo left */
+  .logo {
+    grid-column: 1;
+    grid-row: 1;
+    height: 44px;    /* smaller on phone */
+    width: auto;
+  }
+
+  /* Row 1: hamburger right (injected by JS) */
+  .menu-toggle {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+
+    /* stacked bars */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+
+    margin-left: auto;
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+  }
+  .menu-toggle .bar {
+    width: 26px;
+    height: 3px;
+    background-color: #fff; /* white bars on red header */
+    border-radius: 2px;
+  }
+
+  /* Row 2: title spans full width beneath the bar */
+  .header-text {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    text-align: center;
+  }
+
+  /* Keep your desktop font/spacing vibe; allow clean wrapping into 2 lines */
+  .header-text h1,
+  .header-text h2 {
+    font-family: "Times New Roman", serif;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.2;
+    white-space: normal;          /* allow wrap */
+  }
+  .header-text h1 {
+    font-weight: 700;             /* bold first line */
+    letter-spacing: 0.15em;       /* same as your desktop */
+    font-size: 1.8rem;            /* keep your size */
+  }
+  .header-text h2 {
+    font-weight: normal;
+    letter-spacing: 0.25em;       /* same as your desktop */
+    font-size: 1.2rem;
+    opacity: 0.85;
+    margin-top: 0.25rem;
+  }
+
+  /* Dropdown: only hide when JS marks .nav-ready (so menu never "disappears") */
+  .main-menu { position: relative; padding: 0.25rem 1rem; }
+  .nav-ready .main-menu ul {
+    display: none;
+    position: absolute; left: 0; right: 0; top: 100%;
+    background: #fff;
+    margin: 0; padding: 0.75rem 1rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,.15);
+    border-radius: 8px;
+    flex-direction: column; gap: 0.75rem;
+    z-index: 1000;
+  }
+  .nav-ready.nav-open .main-menu ul { display: flex; }
+
+  /* prevent hover submenus from popping on touch */
+  .main-menu ul li:hover > ul.dropdown { display: none; }
+  .main-menu ul li ul.dropdown { position: static; box-shadow: none; padding: 0; }
+}
+
+/* === Mobile-specific header layout (logo, U of T line, then hamburger) === */
+@media (max-width: 768px) {
+  /* 0) Hide the desktop header text block on phones */
+  .header-text { display: none !important; }
+
+  /* 1) Turn header into a single-column, three-row stack */
+  .header-container {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    align-items: center;
+    gap: 0.35rem;
+    max-width: 100%; /* keep centered */
+  }
+
+  /* 2) Logo on row 1, centered */
+  .logo {
+    grid-row: 1;
+    height: 48px; /* small but readable */
+    width: auto;
+  }
+
+  /* 3) New UofT line on row 2 (Times New Roman, very small, no spacing, one line) */
+  .mobile-uoft {
+    grid-row: 2;
+    display: block;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: normal;
+    letter-spacing: 0;       /* no spaced-out letters */
+    word-spacing: normal;
+    text-transform: none;    /* keep as typed */
+    white-space: nowrap;     /* force one line */
+    line-height: 1.1;
+    opacity: 0.95;
+    /* keep tiny but scale on ultra-small screens */
+    font-size: clamp(10px, 3.6vw, 14px);
+    color: #fff;             /* white on your dark red header */
+    margin-top: 2px;
+  }
+
+  /* 4) Hamburger button on row 3, centered beneath */
+  .menu-toggle {
+    grid-row: 3 !important;
+    justify-self: center !important;
+    margin-top: 4px;
+    background: none;
+    border: none;
+    padding: 6px;
+  }
+  .menu-toggle .bar {
+    width: 26px;
+    height: 3px;
+    background-color: #fff; /* white bars on red header */
+    border-radius: 2px;
+    display: block;
+    margin: 4px 0;
+  }
+
+  /* 5) Keep mobile dropdown behavior as you already have it */
+  .nav-ready .main-menu ul {
+    display: none;
+    position: absolute; left: 0; right: 0; top: 100%;
+    background: #fff;
+    margin: 0;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 1000;
+  }
+  .nav-ready.nav-open .main-menu ul { display: flex; }
+}
+
+/* Hide the mobile-only line on desktop by default */
+.mobile-uoft { 
+  display: none !important;
+}
+
+
+/* Hide on desktop by default */
+.mobile-uoft { 
+  display: none !important;
+}
+
+/* Mobile layout: show subtitle (two-line), compact text */
+@media (max-width: 768px) {
+  .mobile-uoft {
+    display: block !important;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    letter-spacing: 0;
+    white-space: normal;   /* Two lines allowed */
+    line-height: 1.15;
+    font-size: clamp(9px, 3.4vw, 13px); /* Slightly smaller to fit both lines */
+    color: #fff;
+    margin-top: 2px;
+  }
+
+  /* Keep the rest of your mobile header layout rules here (as before) */
 }
