@@ -1035,3 +1035,14 @@ img, svg, video, iframe, canvas { max-width: 100%; height: auto; display: block;
 
   /* Keep the rest of your mobile header layout rules here (as before) */
 }
+
+/* Desktop and tablets landscape: NEVER show the mobile subtitle */
+@media (min-width: 769px) {
+  .mobile-uoft { display: none !important; }
+}
+
+/* Phones: show mobile subtitle, hide desktop title */
+@media (max-width: 768px) {
+  .mobile-uoft { display: block !important; }
+  .header-text { display: none !important; }
+}
