@@ -177,6 +177,7 @@ footer {
 @media (max-width: 768px) {
   .menu-toggle { display: block; }
   .logo-text h2 { display: none; } /* Simplify logo on mobile */
+  .logo-text { display: none; }
   
   .main-nav {
     position: fixed; top: var(--nav-height); right: -100%;
