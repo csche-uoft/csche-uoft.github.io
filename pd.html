@@ -4,202 +4,166 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Professional Development | CSChE UofT</title>
+  <meta name="description" content="Professional development events: Research symposiums, plant tours, and industry nights." />
+  <link rel="icon" type="image/png" href="images/logochat.png">
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/tabletop@1.6.0/tabletop.min.js"></script>
-</head>
+  <script src="main.js" defer></script>
 
-
-
-<body>
-  <!-- SAME HEADER -->
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <img src="images/logochat.png" alt="CSChE Logo" class="logo" />
-
-      <!-- NEW: mobile-only U of T line -->
-      <div class="mobile-uoft" aria-hidden="true">
-        <span>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING:</span><br>
-        <span>UNIVERSITY OF TORONTO</span>
-      </div>
-
-      <div class="header-text">
-        <h1>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING</h1>
-        <h2>UNIVERSITY OF TORONTO CHAPTER</h2>
-      </div>
-    </div>
-  </header>
-
-  <!-- SAME NAVIGATION -->
-  <nav class="main-menu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li>
-        <a href="whatwedo.html">What We Do</a>
-        <ul class="dropdown">
-          <li><a href="pd.html">Professional Development</a></li>
-          <li><a href="industry.html">Industry Mentorship</a></li>
-          <li><a href="outreach.html">Outreach Events</a></li>
-        </ul>
-      </li>
-      <li><a href="ccec.html">CCEC</a></li>
-      <li>
-        <a href="opportunities.html">Opportunities</a>
-        <ul class="dropdown">
-          <li><a href="scholarships.html">Scholarships</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="pey.html">PEY</a></li>
-        </ul>
-      </li>
-      <li><a href="team.html">Meet the Team</a></li>
-      <li><a href="contactus.html">Contact Us</a></li>
-    </ul>
-  </nav>
-
-  <section class="pd-events">
-  <h2>Professional Development Activities</h2>
-  <table class="pd-table">
-    <tbody>
-      <tr>
-        <td class="event-info">
-          <strong>Summer Research Symposium</strong>
-          <p>​At the end of every summer, CSChE hosts a Summer Research Symposium which serves as a local Reg Friesen Oral Paper and Robert G. Auld Student Paper Competition. 
-            The judges, consisting of chemical engineering professors and PhD candidates, provide valuable feedback to participants to improve both their research and presentation skills.
-          </p>
-        </td>
-        <td class="event-image">
-          <img src="images/symposium.png" alt="Symposium" />
-        </td>
-      </tr>
-
-      <tr>
-        <td class="event-info">
-          <strong>Plant Tour</strong>
-          <p>Plant tours enable students to participate in guided tours of plants and operations in the industry. It allows students to connect their academic experience to real-world applications.
-            Past tours have included the Portlands Energy Centre (natural gas power plant), the R.C. Harris Water Treatment Plant, and the Toronto Rehabilitation Institute.
-          </p>
-        </td>
-        <td class="event-image">
-          <img src="images/planttour.jpg" alt="Plant Tour" />
-        </td>
-      </tr>
-
-    <tr>
-        <td class="event-info">
-          <strong>Sector Info Night</strong>
-          <p>Each year we invite alumni from the Chemical Engineering Department to speak with current undergraduates about their careers and how studying chemical engineering at U of T has helped them in their professional endeavours. Companies represented include Hatch, KPMG, AtkinsRealis, Li-Cycle, and McKinsey & Company.
-          </p>
-        </td>
-        <td class="event-image">
-          <img src="images/sector.HEIC" alt="Sector Info Night" />
-        </td>
-      </tr>
-
-            <tr>
-        <td class="event-info">
-          <strong>Research Days</strong>
-          <p>Students attend Research Days to gain knowledge about the topics of research professors are currently working on in the faculty. At the end of the session, there is also a networking opportunity where students are able to speak to professors and discuss aspects of their research. This event provides a chance for students to contact professors for summer research positions and undergraduate thesis opportunities.
-          </p>
-        </td>
-        <td class="event-image">
-          <img src="images/researchday.png" alt="Research Day" />
-        </td>
-      </tr>
-
-
-            <tr>
-        <td class="event-info">
-          <strong>Professor-Student Mixer</strong>
-          <p>This event provides a platform for students to communicate with their professors in an intimate and friendly environment. It also provides an opportunity for first year students to meet their would-be and future professors.
-            We play trivia games and have a fun time with food and drinks.
-          </p>
-        </td>
-        <td class="event-image">
-          <img src="images/profstumix.jpg" alt="Professor Student Mixer" />
-        </td>
-      </tr>
-
-                  <tr>
-        <td class="event-info">
-          <strong>Canadian Chemical Engineering Conference</strong>
-          <p>The Canadian Chemical Engineering Conference (CCEC) is the largest annual gathering of chemical engineering students, professors, and industry professionals in Canada. 
-            CSChE U of T participates in this conference by sending a delegation of students to network with industry professionals, attend workshops, and present their research. Learn more about the conference on our <a href="ccec.html">CCEC page</a>.
-          </p>
-        </td>
-        <td class="event-image">
-          <img src="images/soiree.jpg" alt="Awards Dinner" />
-        </td>
-      </tr>
-
-
-      <!-- Add more rows as needed -->
-    </tbody>
-  </table>
-</section>
-
-
-
- <!-- SAME FOOTER -->
-  <footer class="footer">
-    <p>Connect with us:</p>
-    <div class="social-icons">
-      <a href="https://instagram.com/csche_uoft" target="_blank"><img src="images/instagram.webp" alt="Instagram" /></a>
-      <a href="https://www.linkedin.com/company/cscheuoft/" target="_blank"><img src="images/linkedin.webp" alt="LinkedIn" /></a>
-    </div>
-  </footer>
-
-<script>
-(function () {
-  const bp = 768;
-  const root   = document.documentElement;
-  const header = document.querySelector('.header-container');
-  const menuBar= document.querySelector('.main-menu');
-  const list   = menuBar ? menuBar.querySelector('ul') : null;
-
-  // If the DOM isn't ready, try again after load
-  if (!header || !menuBar || !list) {
-    window.addEventListener('DOMContentLoaded', init, { once: true });
-  } else {
-    init();
-  }
-
-  function init() {
-    const headerEl = document.querySelector('.header-container');
-    const menuEl   = document.querySelector('.main-menu');
-    const ul       = menuEl ? menuEl.querySelector('ul') : null;
-    if (!headerEl || !menuEl || !ul) return; // leave desktop/menu intact
-
-    root.classList.add('nav-ready');          // enables mobile dropdown CSS
-    if (!ul.id) ul.id = 'csche-nav';
-
-    let btn;
-
-    function mount() {
-      if (window.innerWidth <= bp) {
-        if (!btn) {
-          btn = document.createElement('button');
-          btn.className = 'menu-toggle';
-          btn.setAttribute('aria-expanded', 'false');
-          btn.setAttribute('aria-controls', ul.id);
-          // three-bar hamburger
-          btn.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
-          headerEl.appendChild(btn);
-          btn.addEventListener('click', () => {
-            const open = root.classList.toggle('nav-open');
-            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-          });
-        }
-      } else {
-        root.classList.remove('nav-open');
-        if (btn) { btn.remove(); btn = null; }
-      }
+  <style>
+    /* 1. Card Container: Clean spacing and alignment */
+    .event-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start; /* Aligns text to top */
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid #eee; /* Divider line */
     }
 
-    mount();
-    window.addEventListener('resize', mount, { passive: true });
-  }
-})();
-</script>
+    /* 2. Text Area: Takes up available space */
+    .event-info {
+      flex: 1; /* Grow to fill space */
+    }
+    
+    .event-info h3 {
+      color: var(--primary);
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    /* 3. Image Area: FIXED SIZE for uniformity */
+    .event-image {
+      flex: 0 0 300px; /* Don't grow, don't shrink, stay 300px wide */
+    }
+
+    /* 4. The Magic Fix: Force images to be uniform rectangles */
+    .event-image img {
+      width: 100%;
+      height: 200px;      /* Fixed height */
+      object-fit: cover;  /* CROPS the image neatly to fit (no stretching) */
+      border-radius: 8px; /* Rounded corners */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid #eee;
+    }
+
+    /* 5. Mobile Layout (Phones) */
+    @media (max-width: 768px) {
+      .event-row {
+        flex-direction: column-reverse; /* Image goes ON TOP of text */
+        gap: 1rem;
+        padding: 2rem 0;
+      }
+      .event-image {
+        flex: auto;
+        width: 100%; /* Full width on phone */
+      }
+      .event-image img {
+        height: 250px; /* Taller image on phone */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <csche-header></csche-header>
+
+  <main class="container">
+    <section>
+      <h2 style="border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; display: inline-block;">
+        Professional Development Activities
+      </h2>
+      <p style="max-width: 800px; margin-bottom: 1rem; margin-top: 1rem; color: #555;">
+        We organize a variety of events to help bridge the gap between academia and industry, providing students with the skills and network they need to succeed.
+      </p>
+
+      <article class="event-row">
+        <div class="event-info">
+          <h3>Summer Research Symposium</h3>
+          <p>
+            At the end of every summer, CSChE hosts a Summer Research Symposium which serves as a local Reg Friesen Oral Paper and Robert G. Auld Student Paper Competition. 
+            The judges, consisting of chemical engineering professors and PhD candidates, provide valuable feedback to participants to improve both their research and presentation skills.
+          </p>
+        </div>
+        <div class="event-image">
+          <img src="images/symposium.png" alt="Student presenting at symposium" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="event-row">
+        <div class="event-info">
+          <h3>Plant Tours</h3>
+          <p>
+            Plant tours enable students to participate in guided tours of plants and operations in the industry. It allows students to connect their academic experience to real-world applications.
+            <br><br>
+            <strong>Past locations:</strong> Portlands Energy Centre (natural gas power plant), the R.C. Harris Water Treatment Plant, and the Toronto Rehabilitation Institute.
+          </p>
+        </div>
+        <div class="event-image">
+          <img src="images/planttour.jpg" alt="Group photo at plant tour" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="event-row">
+        <div class="event-info">
+          <h3>Sector Info Night</h3>
+          <p>
+            Each year we invite alumni from the Chemical Engineering Department to speak with current undergraduates about their careers and how studying chemical engineering at U of T has helped them in their professional endeavours. 
+            <br><br>
+            <strong>Companies represented:</strong> Hatch, KPMG, AtkinsRealis, Li-Cycle, and McKinsey & Company.
+          </p>
+        </div>
+        <div class="event-image">
+          <img src="images/sector.HEIC" onerror="this.src='images/car6.png'" alt="Toronto Skyline" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="event-row">
+        <div class="event-info">
+          <h3>Research Days</h3>
+          <p>
+            Students attend Research Days to gain knowledge about the topics of research professors are currently working on in the faculty. 
+            At the end of the session, there is a networking opportunity to speak with professors, making this the perfect chance to find summer research positions and thesis supervisors.
+          </p>
+        </div>
+        <div class="event-image">
+          <img src="images/researchday.png" alt="Research Day Poster Session" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="event-row">
+        <div class="event-info">
+          <h3>Professor-Student Mixer</h3>
+          <p>
+            This event provides a platform for students to communicate with their professors in an intimate and friendly environment. It also provides an opportunity for first year students to meet their would-be and future professors.
+            We play trivia games and have a fun time with food and drinks.
+          </p>
+        </div>
+        <div class="event-image">
+          <img src="images/profstumix.jpg" alt="Professor Student Mixer" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="event-row" style="border-bottom: none;">
+        <div class="event-info">
+          <h3>Canadian Chemical Engineering Conference</h3>
+          <p>
+            The CSChE Conference (CCEC) is the largest annual gathering of chemical engineering professionals in Canada. 
+            Our chapter sends a delegation of students every year to network, attend workshops, and present research.
+          </p>
+          <div class="pd-button-group" style="margin-top: 1.5rem;">
+            <a href="ccec.html" class="pd-button outline">View Conference Details</a>
+          </div>
+        </div>
+        <div class="event-image">
+          <img src="images/soiree.jpg" alt="Conference Delegation" loading="lazy" />
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <csche-footer></csche-footer>
 
 </body>
 </html>

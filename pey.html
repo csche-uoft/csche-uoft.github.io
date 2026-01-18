@@ -2,77 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Professional Development | CSChE UofT</title>
+  <title>PEY Co-op | CSChE UofT</title>
+  <link rel="icon" type="image/png" href="images/logochat.png">
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/tabletop@1.6.0/tabletop.min.js"></script>
+  <script src="main.js" defer></script>
+  <style>
+    #searchInput {
+      width: 100%; padding: 12px;
+      border: 2px solid #ddd; border-radius: 4px;
+      font-size: 1rem; margin-bottom: 1rem;
+    }
+    #searchInput:focus { border-color: var(--primary); outline: none; }
+  </style>
 </head>
-
-
-
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <img src="images/logochat.png" alt="CSChE Logo" class="logo" />
+  <csche-header></csche-header>
 
-      <!-- NEW: mobile-only U of T line -->
-      <div class="mobile-uoft" aria-hidden="true">
-        <span>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING:</span><br>
-        <span>UNIVERSITY OF TORONTO</span>
+  <main class="container">
+    <section>
+      <h2>PEY Salary Database</h2>
+      <p>Search past internship data to help negotiate your salary or choose your path.</p>
+      
+      <input type="text" id="searchInput" placeholder="Search by company, title, or year..." />
+      
+      <div style="overflow-x: auto;">
+        <table id="internshipTable" class="pd-table">
+          <thead>
+            <tr>
+              <th>Company</th><th>Year</th><th>Location</th><th>Industry</th><th>Title</th><th>Salary (k)</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </div>
+    </section>
+  </main>
 
-      <div class="header-text">
-        <h1>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING</h1>
-        <h2>UNIVERSITY OF TORONTO CHAPTER</h2>
-      </div>
-    </div>
-  </header>
-
-  <!-- SAME NAVIGATION -->
-  <nav class="main-menu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li>
-        <a href="whatwedo.html">What We Do</a>
-        <ul class="dropdown">
-          <li><a href="pd.html">Professional Development</a></li>
-          <li><a href="industry.html">Industry Mentorship</a></li>
-          <li><a href="outreach.html">Outreach Events</a></li>
-        </ul>
-      </li>
-      <li><a href="ccec.html">CCEC</a></li>
-      <li>
-        <a href="opportunities.html">Opportunities</a>
-        <ul class="dropdown">
-          <li><a href="scholarships.html">Scholarships</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="pey.html">PEY</a></li>
-        </ul>
-      </li>
-      <li><a href="team.html">Meet the Team</a></li>
-      <li><a href="contactus.html">Contact Us</a></li>
-    </ul>
-  </nav>
-
-  <!-- 👇 PEY DATABASE -->
-  <section class="internship-database">
-    <h2>PEY Database</h2>
-    <input type="text" id="searchInput" placeholder="Search internships..." />
-    <table id="internshipTable">
-      <thead>
-        <tr>
-          <th>Company</th>
-          <th>Year of Start</th>
-          <th>Location</th>
-          <th>Industry</th>
-          <th>Position Title</th>
-          <th>Annual Salary (k)</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </section>
+  <csche-footer></csche-footer>
 
   <script>
     const publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTHSQajCZ5u2pbmlu9OhGlVhDq6B0PkPB_NGiCG9ItllrUWhCfJlg0tVn7_MNFMz-qdbDH-Z1dxs60i/pub?output=csv';
@@ -80,13 +46,12 @@
     async function loadCSV() {
       try {
         const response = await fetch(publicSpreadsheetUrl);
-        if (!response.ok) throw new Error('Network response was not ok');
-
         const csvText = await response.text();
+        // Simple CSV parser (robust enough for this data)
         const rows = csvText.trim().split('\n').map(row => row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/));
         const tableBody = document.querySelector('#internshipTable tbody');
-        tableBody.innerHTML = '';
-
+        
+        // Skip header row (i=1)
         for (let i = 1; i < rows.length; i++) {
           const tr = document.createElement('tr');
           rows[i].forEach(cell => {
@@ -96,101 +61,16 @@
           });
           tableBody.appendChild(tr);
         }
-      } catch (error) {
-        console.error('Failed to load CSV:', error);
-      }
+      } catch (error) { console.error('Error loading CSV:', error); }
     }
-
     loadCSV();
 
-    const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', () => {
-      const filter = searchInput.value.toLowerCase();
-      const rows = document.querySelectorAll('#internshipTable tbody tr');
-      rows.forEach(row => {
-        const text = row.textContent.toLowerCase();
-        row.style.display = text.includes(filter) ? '' : 'none';
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      const filter = e.target.value.toLowerCase();
+      document.querySelectorAll('#internshipTable tbody tr').forEach(row => {
+        row.style.display = row.textContent.toLowerCase().includes(filter) ? '' : 'none';
       });
     });
   </script>
-
-  <!-- 👇 PEY INFOGRAPHIC (uses existing styles; no new CSS needed) -->
-  <section class="pd-events" id="pey-infographic">
-    <h2>PEY Process — At a Glance</h2>
-    <p class="pd-intro" style="max-width: 900px; margin-left: auto; margin-right: auto;">
-      A quick visual overview of steps and timelines for PEY Co-op. (Image credit as provided.)
-    </p>
-
-    <div class="what-we-do-image">
-      <img
-        src="https://files.widgetic.com/file/widgetic-uploads/weebly/photo-overlay/127518741/kksjn4jn-2bil5r1.jpg"
-        alt="PEY process infographic overview"
-        loading="lazy"
-      />
-    </div>
-  </section>
-
-  <!-- SAME FOOTER -->
-  <footer class="footer">
-    <p>Connect with us:</p>
-    <div class="social-icons">
-      <a href="https://instagram.com/csche_uoft" target="_blank"><img src="images/instagram.webp" alt="Instagram" /></a>
-      <a href="https://www.linkedin.com/company/cscheuoft/" target="_blank"><img src="images/linkedin.webp" alt="LinkedIn" /></a>
-    </div>
-  </footer>
-
-<script>
-(function () {
-  const bp = 768;
-  const root   = document.documentElement;
-  const header = document.querySelector('.header-container');
-  const menuBar= document.querySelector('.main-menu');
-  const list   = menuBar ? menuBar.querySelector('ul') : null;
-
-  // If the DOM isn't ready, try again after load
-  if (!header || !menuBar || !list) {
-    window.addEventListener('DOMContentLoaded', init, { once: true });
-  } else {
-    init();
-  }
-
-  function init() {
-    const headerEl = document.querySelector('.header-container');
-    const menuEl   = document.querySelector('.main-menu');
-    const ul       = menuEl ? menuEl.querySelector('ul') : null;
-    if (!headerEl || !menuEl || !ul) return; // leave desktop/menu intact
-
-    root.classList.add('nav-ready');          // enables mobile dropdown CSS
-    if (!ul.id) ul.id = 'csche-nav';
-
-    let btn;
-
-    function mount() {
-      if (window.innerWidth <= bp) {
-        if (!btn) {
-          btn = document.createElement('button');
-          btn.className = 'menu-toggle';
-          btn.setAttribute('aria-expanded', 'false');
-          btn.setAttribute('aria-controls', ul.id);
-          // three-bar hamburger
-          btn.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
-          headerEl.appendChild(btn);
-          btn.addEventListener('click', () => {
-            const open = root.classList.toggle('nav-open');
-            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-          });
-        }
-      } else {
-        root.classList.remove('nav-open');
-        if (btn) { btn.remove(); btn = null; }
-      }
-    }
-
-    mount();
-    window.addEventListener('resize', mount, { passive: true });
-  }
-})();
-</script>
-
 </body>
 </html>

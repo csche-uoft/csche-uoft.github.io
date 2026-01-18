@@ -3,170 +3,125 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Professional Development | CSChE UofT</title>
+  <title>Industry Mentorship | CSChE UofT</title>
+  <meta name="description" content="Industry mentorship programs, PEY mixers, and resume workshops for Chemical Engineering students." />
+  <link rel="icon" type="image/png" href="images/logochat.png">
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/tabletop@1.6.0/tabletop.min.js"></script>
-</head>
+  <script src="main.js" defer></script>
 
-
-
-<body>
-  <!-- SAME HEADER -->
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <img src="images/logochat.png" alt="CSChE Logo" class="logo" />
-
-      <!-- NEW: mobile-only U of T line -->
-      <div class="mobile-uoft" aria-hidden="true">
-        <span>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING:</span><br>
-        <span>UNIVERSITY OF TORONTO</span>
-      </div>
-
-      <div class="header-text">
-        <h1>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING</h1>
-        <h2>UNIVERSITY OF TORONTO CHAPTER</h2>
-      </div>
-    </div>
-  </header>
-  <!-- SAME NAVIGATION -->
-  <nav class="main-menu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li>
-        <a href="whatwedo.html">What We Do</a>
-        <ul class="dropdown">
-          <li><a href="pd.html">Professional Development</a></li>
-          <li><a href="industry.html">Industry Mentorship</a></li>
-          <li><a href="outreach.html">Outreach Events</a></li>
-        </ul>
-      </li>
-      <li><a href="ccec.html">CCEC</a></li>
-      <li>
-        <a href="opportunities.html">Opportunities</a>
-        <ul class="dropdown">
-          <li><a href="scholarships.html">Scholarships</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="pey.html">PEY</a></li>
-        </ul>
-      </li>
-      <li><a href="team.html">Meet the Team</a></li>
-      <li><a href="contactus.html">Contact Us</a></li>
-    </ul>
-  </nav>
-
-  <section class="pd-events">
-  <h2>Industry Mentorship</h2>
-  <table class="pd-table">
-    <tbody>
-      <tr>
-        <td class="event-info">
-          <strong>PEY-Student Mixer</strong>
-          <p>​The PEY Student Mixer is an event to allow students who may be considering PEY placements to network with upper year students 
-            who have returned from or are currently completing a 12-16 month PEY work term. Many students entering the PEY 
-            co-op program are nervous about  opportunities and do not know what to expect from employers. 
-            This event allows students to hear first-hand experiences about internships in sectors. 
-          </p>
-        </td>
-        <td class="event-image">
-          <img src="images/peymixer.png" alt="Symposium" />
-        </td>
-      </tr>
-      <tr>
-        <td class="event-info">
-          <strong>Resume and Interview Drop-Ins</strong>
-          <p> To supplement the University of Toronto Engineering Career Centre and our Chapter’s PEY Mentorship Program, 
-            we hold resume and interview workshops/drop-in sessions. These sessions are tailored based on student demand.
-            Mentors help mentees polish their resumes, prepare for interviews, and succeed with their applications.
-          </p>
-        </td>
-        <td class="event-image">
-          <img src="images/mentorship.png" alt="Mentorship" />
-        </td>
-      </tr>
-      <tr></tr>
-        <td class="event-info">
-          <strong>Professional Experience Mentorship Program</strong>
-          <p>The ‘Professional Experience Mentorship Program’ is a year-long initiative to build meaningful relationships between undergraduate students who are interested in participating in the PEY program and those currently on PEY or have been in the past. 
-            The focus is to aid primarily second and third year students throughout the application process and ease the transition between academia and industry. 
-          </p>
-        </td>
-        <td class="event-image">
-          <img src="images/mentorship.png" alt="Mentorship" />
-        </td>
-
-    <tr>
-
-
-
-      <!-- Add more rows as needed -->
-    </tbody>
-  </table>
-</section>
-
-
-
- <!-- SAME FOOTER -->
-  <footer class="footer">
-    <p>Connect with us:</p>
-    <div class="social-icons">
-      <a href="https://instagram.com/csche_uoft" target="_blank"><img src="images/instagram.webp" alt="Instagram" /></a>
-      <a href="https://www.linkedin.com/company/cscheuoft/" target="_blank"><img src="images/linkedin.webp" alt="LinkedIn" /></a>
-    </div>
-  </footer>
-
-<script>
-(function () {
-  const bp = 768;
-  const root   = document.documentElement;
-  const header = document.querySelector('.header-container');
-  const menuBar= document.querySelector('.main-menu');
-  const list   = menuBar ? menuBar.querySelector('ul') : null;
-
-  // If the DOM isn't ready, try again after load
-  if (!header || !menuBar || !list) {
-    window.addEventListener('DOMContentLoaded', init, { once: true });
-  } else {
-    init();
-  }
-
-  function init() {
-    const headerEl = document.querySelector('.header-container');
-    const menuEl   = document.querySelector('.main-menu');
-    const ul       = menuEl ? menuEl.querySelector('ul') : null;
-    if (!headerEl || !menuEl || !ul) return; // leave desktop/menu intact
-
-    root.classList.add('nav-ready');          // enables mobile dropdown CSS
-    if (!ul.id) ul.id = 'csche-nav';
-
-    let btn;
-
-    function mount() {
-      if (window.innerWidth <= bp) {
-        if (!btn) {
-          btn = document.createElement('button');
-          btn.className = 'menu-toggle';
-          btn.setAttribute('aria-expanded', 'false');
-          btn.setAttribute('aria-controls', ul.id);
-          // three-bar hamburger
-          btn.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
-          headerEl.appendChild(btn);
-          btn.addEventListener('click', () => {
-            const open = root.classList.toggle('nav-open');
-            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-          });
-        }
-      } else {
-        root.classList.remove('nav-open');
-        if (btn) { btn.remove(); btn = null; }
-      }
+  <style>
+    /* 1. Card Container */
+    .event-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid #eee;
     }
 
-    mount();
-    window.addEventListener('resize', mount, { passive: true });
-  }
-})();
-</script>
+    /* 2. Text Area */
+    .event-info {
+      flex: 1;
+    }
+    .event-info h3 {
+      color: var(--primary);
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    /* 3. Image Area - Fixed Size */
+    .event-image {
+      flex: 0 0 300px; /* Fixed width on desktop */
+    }
+
+    /* 4. Image Styling - Uniform Crop */
+    .event-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover; /* Prevents stretching */
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid #eee;
+    }
+
+    /* 5. Mobile Layout */
+    @media (max-width: 768px) {
+      .event-row {
+        flex-direction: column-reverse; /* Image on top */
+        gap: 1rem;
+        padding: 2rem 0;
+      }
+      .event-image {
+        flex: auto;
+        width: 100%;
+      }
+      .event-image img {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <csche-header></csche-header>
+
+  <main class="container">
+    <section>
+      <h2 style="border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; display: inline-block;">
+        Industry Mentorship
+      </h2>
+      <p style="max-width: 800px; margin-bottom: 1rem; margin-top: 1rem; color: #555;">
+        Connect with professionals and upper-year students to navigate your career path, refine your resume, and prepare for PEY Co-op.
+      </p>
+
+      <article class="event-row">
+        <div class="event-info">
+          <h3>PEY-Student Mixer</h3>
+          <p>
+            The PEY Student Mixer allows students considering placements to network with upper-year students who have returned from or are currently completing a 12-16 month PEY work term. 
+            <br><br>
+            Many students are nervous about opportunities and unsure what to expect. This event provides first-hand insights into internships across various sectors, helping to demystify the process.
+          </p>
+        </div>
+        <div class="event-image">
+          <img src="images/peymixer.png" alt="Students networking at mixer" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="event-row">
+        <div class="event-info">
+          <h3>Resume and Interview Drop-Ins</h3>
+          <p>
+            To supplement the Engineering Career Centre, we hold resume and interview workshops tailored to student demand.
+            <br><br>
+            Our mentors help mentees polish their resumes, prepare for interviews, and succeed with their applications. It's the perfect way to get personalized feedback before deadlines.
+          </p>
+        </div>
+        <div class="event-image">
+          <img src="images/mentorship.png" alt="Resume review session" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="event-row" style="border-bottom: none;">
+        <div class="event-info">
+          <h3>Professional Experience Mentorship Program</h3>
+          <p>
+            This year-long initiative builds meaningful relationships between undergraduate students interested in the PEY program and those who have already completed it.
+            <br><br>
+            The focus is to aid primarily second and third-year students throughout the application process, easing the transition between academia and industry.
+          </p>
+        </div>
+        <div class="event-image">
+          <img src="images/mentorship.png" alt="Mentorship discussion" loading="lazy" />
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <csche-footer></csche-footer>
 
 </body>
 </html>
