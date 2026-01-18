@@ -4,195 +4,129 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us | CSChE UofT</title>
+  <meta name="description" content="Contact the CSChE U of T Chapter via email or visit us at the Wallberg Memorial Building." />
+  <link rel="icon" type="image/png" href="images/logochat.png">
   <link rel="stylesheet" href="style.css" />
-</head>
+  <script src="main.js" defer></script>
 
-<body>
-  <!-- HEADER -->
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <img src="images/logochat.png" alt="CSChE Logo" class="logo" />
-
-      <!-- NEW: mobile-only U of T line -->
-      <div class="mobile-uoft" aria-hidden="true">
-        <span>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING:</span><br>
-        <span>UNIVERSITY OF TORONTO</span>
-      </div>
-
-      <div class="header-text">
-        <h1>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING</h1>
-        <h2>UNIVERSITY OF TORONTO CHAPTER</h2>
-      </div>
-    </div>
-  </header>
-
-  <!-- NAV -->
-  <nav class="main-menu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li>
-        <a href="whatwedo.html">What We Do</a>
-        <ul class="dropdown">
-          <li><a href="pd.html">Professional Development</a></li>
-          <li><a href="industry.html">Industry Mentorship</a></li>
-          <li><a href="outreach.html">Outreach Events</a></li>
-        </ul>
-      </li>
-      <li><a href="ccec.html">CCEC</a></li>
-      <li>
-        <a href="opportunities.html">Opportunities</a>
-        <ul class="dropdown">
-          <li><a href="scholarships.html">Scholarships</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="pey.html">PEY</a></li>
-        </ul>
-      </li>
-      <li><a href="team.html">Meet the Team</a></li>
-      <li><a href="contactus.html">Contact Us</a></li>
-    </ul>
-  </nav>
-
-  <!-- CONTACT CONTENT -->
-  <section class="pd-events">
-    <h2>Contact Us</h2>
-    <p class="pd-intro">
-      Have questions about events, partnerships, or getting involved? Reach out anytime —
-      we’ll get back to you as soon as we can.
-    </p>
-
-    <table class="pd-table" aria-label="Contact information">
-      <tr>
-        <td class="event-info">
-          <strong>General Inquiries</strong>
-          <p>Email our chapter for anything CSChE U of T related.</p>
-          <div class="pd-button-group" style="justify-content:flex-start;">
-            <a class="pd-button" href="mailto:csche@g.skule.ca">Email Us</a>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="event-info">
-          <strong>Industry & Sponsorship</strong>
-          <p>Partner with us for talks, plant tours, case comps, and sponsorships.</p>
-          <div class="pd-button-group" style="justify-content:flex-start;">
-            <a class="pd-button" href="mailto:csche@g.skule.ca">Contact Industry</a>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="event-info">
-          <strong>Student Support</strong>
-          <p>Questions about membership, events, or opportunities for students.</p>
-          <div class="pd-button-group" style="justify-content:flex-start;">
-            <a class="pd-button" href="mailto:csche@g.skule.ca">Contact Student Rep</a>
-          </div>
-        </td>
-      </tr>
-    </table>
-  </section>
-
-  <section class="pd-events">
-    <h2>Location</h2>
-    <p class="pd-intro" style="max-width:900px;margin-left:auto;margin-right:auto;">
-      We’re based in the <strong>Wallberg Memorial Building</strong>, University of Toronto, St. George Campus.
-    </p>
-
-    <!-- Map container uses inline styles to mimic your image card look without new CSS -->
-    <div class="what-we-do-image" style="max-width:1000px;margin:0 auto;">
-      <div style="
-        border-radius:12px;
-        overflow:hidden;
-        box-shadow:0 4px 12px rgba(0,0,0,0.1);
-      ">
-        <!-- Google Maps embed targeting Wallberg Memorial Building -->
-        <iframe
-          title="Wallberg Memorial Building Map"
-          width="100%"
-          height="420"
-          style="border:0; display:block;"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=Wallberg%20Memorial%20Building%2C%20Toronto%2C%20ON&z=16&output=embed">
-        </iframe>
-      </div>
-    </div>
-
-    <table class="pd-table" aria-label="Address">
-      <tr>
-        <td class="event-info">
-          <strong>Address</strong>
-          <ul>
-            <li>Wallberg Memorial Building</li>
-            <li>184–200 College St, Toronto, ON M5S 3E5</li>
-            <li>University of Toronto — St. George</li>
-          </ul>
-        </td>
-      </tr>
-    </table>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>Connect with us:</p>
-    <div class="social-icons">
-      <a href="https://instagram.com/csche_uoft" target="_blank"><img src="images/instagram.webp" alt="Instagram" /></a>
-      <a href="https://www.linkedin.com/company/cscheuoft/" target="_blank"><img src="images/linkedin.webp" alt="LinkedIn" /></a>
-    </div>
-  </footer>
-
-<script>
-(function () {
-  const bp = 768;
-  const root   = document.documentElement;
-  const header = document.querySelector('.header-container');
-  const menuBar= document.querySelector('.main-menu');
-  const list   = menuBar ? menuBar.querySelector('ul') : null;
-
-  // If the DOM isn't ready, try again after load
-  if (!header || !menuBar || !list) {
-    window.addEventListener('DOMContentLoaded', init, { once: true });
-  } else {
-    init();
-  }
-
-  function init() {
-    const headerEl = document.querySelector('.header-container');
-    const menuEl   = document.querySelector('.main-menu');
-    const ul       = menuEl ? menuEl.querySelector('ul') : null;
-    if (!headerEl || !menuEl || !ul) return; // leave desktop/menu intact
-
-    root.classList.add('nav-ready');          // enables mobile dropdown CSS
-    if (!ul.id) ul.id = 'csche-nav';
-
-    let btn;
-
-    function mount() {
-      if (window.innerWidth <= bp) {
-        if (!btn) {
-          btn = document.createElement('button');
-          btn.className = 'menu-toggle';
-          btn.setAttribute('aria-expanded', 'false');
-          btn.setAttribute('aria-controls', ul.id);
-          // three-bar hamburger
-          btn.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
-          headerEl.appendChild(btn);
-          btn.addEventListener('click', () => {
-            const open = root.classList.toggle('nav-open');
-            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-          });
-        }
-      } else {
-        root.classList.remove('nav-open');
-        if (btn) { btn.remove(); btn = null; }
-      }
+  <style>
+    /* 1. Contact Grid */
+    .contact-grid {
+      display: grid;
+      /* Fits columns automatically. With 2 items, they will split 50/50 on desktop. */
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
     }
 
-    mount();
-    window.addEventListener('resize', mount, { passive: true });
-  }
-})();
-</script>
+    /* 2. Contact Card */
+    .contact-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid #eee;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .contact-card h3 {
+      color: var(--primary);
+      margin-top: 0;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .contact-card p {
+      color: #555;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
+    /* 3. Clearly Visible Email Styling */
+    .email-link {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--text-dark);
+      background: #f4f4f4;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      font-family: monospace;
+    }
+
+    /* 4. Map Section */
+    .map-container {
+      margin-top: 4rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <csche-header></csche-header>
+
+  <main class="container">
+    <section style="text-align: center; max-width: 800px; margin: 0 auto;">
+      <h2 style="border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; display: inline-block;">
+        Contact Us
+      </h2>
+      <p style="margin-top: 1rem; color: #555; font-size: 1.1rem;">
+        Have questions about events, partnerships, or getting involved? Reach out anytime.
+      </p>
+    </section>
+
+    <div class="contact-grid">
+      
+      <div class="contact-card">
+        <h3>General Inquiries</h3>
+        <p>
+          For general questions about the chapter, our events, or how to join our mailing list.
+        </p>
+        <span class="email-link">csche@g.skule.ca</span>
+        <a href="mailto:csche@g.skule.ca" class="pd-button">Open Mail App</a>
+      </div>
+
+      <div class="contact-card">
+        <h3>Industry & Sponsorship</h3>
+        <p>
+          Partner with us for recruitment talks, plant tours, case competitions, and sponsorship packages.
+        </p>
+        <span class="email-link">csche@g.skule.ca</span>
+        <a href="mailto:csche@g.skule.ca?subject=Industry%20Partnership%20Inquiry" class="pd-button outline">Contact Industry Team</a>
+      </div>
+
+    </div>
+
+    <section>
+      <div class="map-container">
+        <iframe 
+          src="https://maps.google.com/maps?q=Wallberg+Memorial+Building&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          width="100%" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <div style="margin-top: 2rem; text-align: center;">
+        <h3 style="color: var(--primary);">Visit Our Office</h3>
+        <p style="color: #555; font-size: 1.1rem;">
+          <strong>Wallberg Memorial Building</strong><br>
+          184–200 College St, Toronto, ON M5S 3E5<br>
+          University of Toronto — St. George Campus
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <csche-footer></csche-footer>
 
 </body>
 </html>

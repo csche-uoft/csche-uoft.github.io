@@ -4,309 +4,296 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Research Opportunities | CSChE UofT</title>
+  <meta name="description" content="Explore summer research, global exchanges, and skills development programs for Chemical Engineering students." />
+  <link rel="icon" type="image/png" href="images/logochat.png">
   <link rel="stylesheet" href="style.css" />
-</head>
+  <script src="main.js" defer></script>
 
-<script>
-(function () {
-  const bp = 768; // behave as "mobile" at this width and below
-  const root = document.documentElement;
-  const header = document.querySelector('.header-container');
-  const menuBar = document.querySelector('.main-menu');
-  if (!header || !menuBar) return;
-
-  let btn;
-
-  function setState() {
-    if (window.innerWidth <= bp) {
-      if (!btn) {
-        btn = document.createElement('button');
-        btn.className = 'menu-toggle';
-        btn.setAttribute('aria-expanded', 'false');
-        btn.setAttribute('aria-controls', 'csche-nav');
-        btn.innerHTML = 'Menu';
-        // ensure the UL has an id for aria-controls
-        const ul = menuBar.querySelector('ul');
-        if (ul && !ul.id) ul.id = 'csche-nav';
-        // put the button at the right end of the header bar
-        header.appendChild(btn);
-        btn.addEventListener('click', () => {
-          const open = root.classList.toggle('nav-open');
-          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        });
-      }
-    } else {
-      root.classList.remove('nav-open');
-      if (btn) { btn.remove(); btn = null; }
+  <style>
+    /* 1. Smooth Scrolling for Anchor Links */
+    html {
+      scroll-behavior: smooth;
     }
-  }
 
-  setState();
-  window.addEventListener('resize', setState, { passive: true });
-})();
-</script>
+    /* 2. Grid Layout for Cards */
+    .research-grid {
+      display: grid;
+      /* 1 column on mobile, 2 columns on tablet/desktop */
+      grid-template-columns: 1fr; 
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    @media (min-width: 768px) {
+      .research-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
+    /* 3. Research Card Style */
+    .research-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border: 1px solid #eee;
+      transition: transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
 
-<body class="research-page">
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <img src="images/logochat.png" alt="CSChE Logo" class="logo" />
+    .research-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary);
+    }
 
-      <!-- NEW: mobile-only U of T line -->
-      <div class="mobile-uoft" aria-hidden="true">
-        <span>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING:</span><br>
-        <span>UNIVERSITY OF TORONTO</span>
+    .research-card h3 {
+      color: var(--primary);
+      font-size: 1.25rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #f4f4f4;
+      padding-bottom: 0.5rem;
+    }
+
+    .research-card ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .research-card li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* 4. Link Styling in Cards */
+    .research-card a {
+      color: var(--primary);
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .research-card a:hover {
+      text-decoration: none;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <csche-header></csche-header>
+
+  <main class="container">
+    
+    <section id="top">
+      <h2 style="border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; display: inline-block;">
+        Research Opportunities
+      </h2>
+      <p style="margin-top: 1rem; color: #555; max-width: 800px;">
+        Explore opportunities for summer research, global exchanges, skills development, and key resources to support your professional growth.
+      </p>
+      
+      <div class="pd-button-group">
+        <a class="pd-button" href="#interests">Interests</a>
+        <a class="pd-button outline" href="#summer">Summer / Full‑time</a>
+        <a class="pd-button outline" href="#global">Global</a>
+        <a class="pd-button outline" href="#programs">Programs</a>
+        <a class="pd-button outline" href="#skills">Skills</a>
+        <a class="pd-button outline" href="#resources">Resources</a>
       </div>
+    </section>
 
-      <div class="header-text">
-        <h1>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING</h1>
-        <h2>UNIVERSITY OF TORONTO CHAPTER</h2>
+    <section id="interests">
+      <div style="background: #fffafa; padding: 2rem; border-left: 5px solid var(--primary); border-radius: 4px;">
+        <h3 style="color: var(--primary); margin-top: 0;">What Interests You?</h3>
+        <p>
+          U of T Engineering is home to 120 research chairs and more than 25 multidisciplinary, leading edge research hubs. These clusters signify cutting-edge initiatives tackling social, economic, environmental, and industrial issues.
+        </p>
+        <p>
+          Explore the clusters here: <a href="https://www.engineering.utoronto.ca/research-innovation/u-t-engineering-research/" target="_blank" style="color: var(--primary); font-weight: bold;">​engineering.utoronto.ca/research-innovation</a>
+        </p>
       </div>
-    </div>
-  </header>
+    </section>
 
-  <!-- NAVIGATION -->
-  <nav class="main-menu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li>
-        <a href="whatwedo.html">What We Do</a>
-        <ul class="dropdown">
-          <li><a href="pd.html">Professional Development</a></li>
-          <li><a href="industry.html">Industry Mentorship</a></li>
-          <li><a href="outreach.html">Outreach Events</a></li>
-        </ul>
-      </li>
-      <li><a href="ccec.html">CCEC</a></li>
-      <li>
-        <a href="opportunities.html">Opportunities</a>
-        <ul class="dropdown">
-          <li><a href="scholarships.html">Scholarships</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="pey.html">PEY</a></li>
-        </ul>
-      </li>
-      <li><a href="team.html">Meet the Team</a></li>
-      <li><a href="contactus.html">Contact Us</a></li>
-    </ul>
-  </nav>
+    <section id="summer">
+      <h3>Summer (or Full‑time) Research</h3>
+      <div class="research-grid">
+        
+        <div class="research-card">
+          <h3>USRA (NSERC)</h3>
+          <ul>
+            <li><strong>Undergraduate Student Research Awards</strong></li>
+            <li>Sponsored by NSERC.</li>
+            <li>16 weeks of research supervised by a faculty member.</li>
+            <li><em>Eligibility:</em> Canadian citizens or PR only.</li>
+          </ul>
+        </div>
 
-  <!-- PAGE INTRO -->
-  <section class="pd-events" id="top">
-    <h2>Research Opportunities</h2>
-    <p class="pd-intro">Explore opportunities for summer research, global exchanges, skills development, and key resources to support your professional growth.</p>
-    <div class="pd-button-group">
-      <a class="pd-button" href="#interests">What Interests You?</a>
-      <a class="pd-button" href="#summer">Summer / Full‑time Research</a>
-      <a class="pd-button" href="#global">Global Research</a>
-      <a class="pd-button" href="#programs">Research Programs</a>
-      <a class="pd-button" href="#skills">Skills Development</a>
-      <a class="pd-button" href="#resources">Resources</a>
-    </div>
-  </section>
+        <div class="research-card">
+          <h3>UTEA (U of T Excellence)</h3>
+          <ul>
+            <li><strong>University of Toronto Excellence Awards</strong></li>
+            <li>Sponsored by U of T.</li>
+            <li>14 full weeks of summer research.</li>
+            <li>Valued at a minimum of $7,500.</li>
+            <li>Use the <a href="#">DiscoverResearch tool</a> to find professors.</li>
+          </ul>
+        </div>
 
-  <!-- WHAT INTERESTS YOU -->
-  <section class="pd-events" id="interests">
-    <h2>What Interests You?</h2>
-    <p>
-      U of T Engineering is home to 120 research chairs and more than 25 multidisciplinary, leading edge research hubs that represent our six Innovation Clusters. These clusters signify cutting-edge research initiatives tackling a wide array of social, economic, environmental, and industrial issues. Our extensive and in-depth research excellence, coupled with robust partnerships and a vibrant entrepreneurial culture, empowers our researchers to create advanced technology-driven solutions that meet the demands of an evolving global market.
-    </p>
-    <p>
-      Explore and find out more here: <a href="https://www.engineering.utoronto.ca/research-innovation/u-t-engineering-research/" target="_blank">​engineering.utoronto.ca/research-innovation</a>
-    </p>
-  </section>
+      </div>
+    </section>
 
-  <!-- SUMMER / FULL-TIME -->
-  <section class="pd-events" id="summer">
-    <h2>Summer (or Full‑time) Research Opportunities</h2>
-    <table class="pd-table" aria-label="Summer or full-time research opportunities">
-      <tr>
-        <td class="event-info">
-          <strong>Undergraduate Student Research Awards (USRA)</strong>
+    <section id="global">
+      <h3>Global Research Experiences</h3>
+      <div class="research-grid">
+        
+        <div class="research-card">
+          <h3>Summer Research Exchange</h3>
           <ul>
-            <li>Sponsored by Natural Sciences and Engineering Council of Canada (NSERC)</li>
-            <li>16 weeks of research supervised by a faculty member</li>
-            <li>Only open to Canadian citizens or PR</li>
+            <li>Guaranteed funding of up to $3,000.</li>
+            <li>Administered through the Centre for International Experience (CIE).</li>
+            <li>Gain engineering research experience abroad at world-class institutions.</li>
+            <li>4-month internship for 2nd and 3rd-year students.</li>
           </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="event-info">
-          <strong>University of Toronto Excellence Awards (UTEA)</strong>
-          <ul>
-            <li>Sponsored by U of T</li>
-            <li>14 full weeks of summer research supervised by a faculty</li>
-            <li>Valued at a minimum of $7500</li>
-            <li>You can also use U of T’s DiscoverResearch tool to search for professors who are doing research in fields and topics that interest you.</li>
-          </ul>
-        </td>
-      </tr>
-    </table>
-  </section>
+        </div>
 
-  <!-- GLOBAL -->
-  <section class="pd-events" id="global">
-    <h2>Global Research Experiences</h2>
-    <table class="pd-table" aria-label="Global research experiences">
-      <tr>
-        <td class="event-info">
-          <strong>Undergraduate Summer Research Exchange</strong>
+        <div class="research-card">
+          <h3>APS299Y</h3>
           <ul>
-            <li>Guaranteed funding of up to $3000</li>
-            <li>Administered through the Centre for International Experience (CIE), this program is a fantastic way to gain engineering research experience abroad at world-class institutions</li>
-            <li>4-month internship program open to 2nd- and 3rd-year students</li>
+            <li>For-credit research-based summer course.</li>
+            <li>May count towards engineering program or engineering minor.</li>
           </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="event-info">
-          <strong>APS299Y</strong>
-          <ul>
-            <li>For-credit research-based summer course</li>
-            <li>May counts towards engineering program or engineering minor</li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="event-info">
-          <strong>Summer Research Abroad</strong>
-          <ul>
-            <li>Open for upper-year undergrad students in science, engineering, and other fields.</li>
-            <li>Summer research projects available at partner institutions for about 12 weeks over the summer</li>
-          </ul>
-        </td>
-      </tr>
-    </table>
-  </section>
+        </div>
 
-  <!-- PROGRAMS -->
-  <section class="pd-events" id="programs">
-    <h2>Research Programs</h2>
-    <p>There are various structured opportunities and programs at U of T with a focus on research. Consider applying to these opportunities:</p>
-    <table class="pd-table" aria-label="Research programs">
-      <tr>
-        <td class="event-info">
-          <strong>TRANSFORM HF Undergraduate Summer Research Program (USRP)</strong>
+        <div class="research-card">
+          <h3>Summer Research Abroad</h3>
           <ul>
-            <li>Train alongside a multidisciplinary community of researchers to address the challenges of inequity in heart failure care.</li>
+            <li>Open for upper-year undergrad students in science and engineering.</li>
+            <li>Projects available at partner institutions for about 12 weeks over the summer.</li>
           </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="event-info">
-          <strong>Acceleration Consortium Summer Undergraduate Research Program (AC‑SURP)</strong>
-          <ul>
-            <li>Provides funding for undergraduates who self-identify as members of equity-deserving groups to gain experiential training in topics related to accelerated materials and molecule discovery.</li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="event-info">
-          <strong>Work Study Program</strong>
-          <ul>
-            <li>Find research positions posted in the Work‑Study Program under the Research Experience Stream.</li>
-            <li>Make sure to review the eligibility requirements for posted positions and review the CLNx resource given below.</li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="event-info">
-          <strong>International Opportunities</strong>
-          <ul>
-            <li>There are several opportunities to gain research experience abroad.</li>
-            <li>Check the current international opportunities page to discover programs abroad for engineering students.</li>
-          </ul>
-        </td>
-      </tr>
-    </table>
-  </section>
+        </div>
 
-  <!-- SKILLS -->
-  <section class="pd-events" id="skills">
-    <h2>Research Skills Development</h2>
-    <p>To enhance research skills and experience, U of T has initiatives that students are encouraged to participate in:</p>
-    <table class="pd-table" aria-label="Research skills development">
-      <tr>
-        <td class="event-info">
-          <strong>Undergraduate Summer Research Program (USRP)</strong>
-          <ul>
-            <li>Opportunity for students engaging in summer research to meet weekly.</li>
-            <li>Learn success skills from experts to enhance research experience.</li>
-            <li>Form a community of student researchers.</li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="event-info">
-          <strong>Undergraduate Engineering Research Day (UnERD)</strong>
-          <ul>
-            <li>Annual conference where undergraduate engineering students present their research to the Engineering community, including fellow students, faculty, staff, and industry professionals.</li>
-          </ul>
-        </td>
-      </tr>
-    </table>
-  </section>
+      </div>
+    </section>
 
-  <!-- RESOURCES -->
-  <section class="pd-events" id="resources">
-    <h2>Other Important Resources</h2>
-    <table class="pd-table" aria-label="Other important resources">
-      <tr>
-        <td class="event-info">
-          <strong>Work with ChemE Faculties</strong>
-          <ul>
-            <li>Link: <a href="https://chem-eng.utoronto.ca/research/current-student-research-opportunities/" target="_blank" rel="noopener">chem-eng.utoronto.ca/research/current-student-research-opportunities/</a></li>
-            <li>Summer research projects available at partner institutions for about 12 weeks over the summer</li>
-            <li>Supervised by a ChemE faculty</li>
-            <li>Suitable for a 4th year thesis (CHE499Y or ESC499Y), a project for an MEng degree, or Summer Research Abroad</li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="event-info">
-          <strong>YNCN (You're Next Career Network)</strong>
-          <ul>
-            <li>If you're looking to land your dream job, check out the YNCN Career Fair that is held twice every academic year.</li>
-            <li>Whether you’re a first year student seeking a summer internship, a fourth year pursuing a full‑time role, or hunting for a PEY position, their career fair has a company for you.</li>
-            <li>Link: <a href="http://www.yourenext.ca/" target="_blank" rel="noopener">yourenext.ca</a></li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="event-info">
-          <strong>Engineering Career Centre (ECC)</strong>
-          <ul>
-            <li>Services for all U of T Engineering students that support meaningful professional experiences.</li>
-            <li>Hosts workshops, events, and services throughout the year.</li>
-            <li>Runs two work‑integrated learning programs: PEY Co‑op and ESIP.</li>
-            <li>Link: <a href="http://engineeringcareers.utoronto.ca/" target="_blank" rel="noopener">engineeringcareers.utoronto.ca</a></li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="event-info">
-          <strong>Career Learning Network (CLNx)</strong>
-          <ul>
-            <li>Tri‑campus community connecting students and recent graduates with opportunities, events, and services.</li>
-            <li>Log in to view/apply for on‑campus, off‑campus, and work‑study roles; register for events and workshops; access your Co‑Curricular Record; and discover academic/career resources.</li>
-            <li>Link: <a href="http://cln.utoronto.ca/" target="_blank" rel="noopener">cln.utoronto.ca</a></li>
-          </ul>
-        </td>
-      </tr>
-    </table>
-    <div class="pd-button-group" style="margin-top:2rem;">
-      <a class="pd-button" href="#top">Back to Top</a>
-    </div>
-  </section>
+    <section id="programs">
+      <h3>Research Programs</h3>
+      <div class="research-grid">
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>Connect with us:</p>
-    <div class="social-icons">
-      <a href="https://instagram.com/csche_uoft" target="_blank"><img src="images/instagram.webp" alt="Instagram" /></a>
-      <a href="https://www.linkedin.com/company/cscheuoft/" target="_blank"><img src="images/linkedin.webp" alt="LinkedIn" /></a>
-    </div>
-  </footer>
+        <div class="research-card">
+          <h3>TRANSFORM HF (USRP)</h3>
+          <ul>
+            <li>Train alongside a multidisciplinary community of researchers.</li>
+            <li>Address challenges of inequity in heart failure care.</li>
+          </ul>
+        </div>
+
+        <div class="research-card">
+          <h3>AC‑SURP</h3>
+          <ul>
+            <li><strong>Acceleration Consortium</strong></li>
+            <li>Funding for undergraduates from equity-deserving groups.</li>
+            <li>Experiential training in accelerated materials and molecule discovery.</li>
+          </ul>
+        </div>
+
+        <div class="research-card">
+          <h3>Work Study Program</h3>
+          <ul>
+            <li>Find research positions under the "Research Experience Stream".</li>
+            <li>Review eligibility on CLNx (linked below).</li>
+          </ul>
+        </div>
+
+        <div class="research-card">
+          <h3>International Opportunities</h3>
+          <ul>
+            <li>Various opportunities to gain research experience abroad.</li>
+            <li>Check the international opportunities page for current programs.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="skills">
+      <h3>Skills Development</h3>
+      <div class="research-grid">
+        
+        <div class="research-card">
+          <h3>USRP Community</h3>
+          <ul>
+            <li><strong>Undergraduate Summer Research Program</strong></li>
+            <li>Meet weekly with other summer researchers.</li>
+            <li>Learn success skills from experts.</li>
+            <li>Form a community of student peers.</li>
+          </ul>
+        </div>
+
+        <div class="research-card">
+          <h3>UnERD</h3>
+          <ul>
+            <li><strong>Undergraduate Engineering Research Day</strong></li>
+            <li>Annual conference to present your research.</li>
+            <li>Audience includes students, faculty, staff, and industry professionals.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="resources">
+      <h3>Important Resources</h3>
+      <div class="research-grid">
+
+        <div class="research-card">
+          <h3>ChemE Faculty Projects</h3>
+          <ul>
+            <li>Summer research projects supervised by ChemE faculty.</li>
+            <li>Suitable for 4th year thesis or MEng projects.</li>
+            <li><a href="https://chem-eng.utoronto.ca/research/current-student-research-opportunities/" target="_blank" rel="noopener">View Faculty Opportunities</a></li>
+          </ul>
+        </div>
+
+        <div class="research-card">
+          <h3>YNCN</h3>
+          <ul>
+            <li><strong>You're Next Career Network</strong></li>
+            <li>Career fairs held twice an academic year.</li>
+            <li>Great for internships, PEY, and full-time roles.</li>
+            <li><a href="http://www.yourenext.ca/" target="_blank" rel="noopener">Visit YNCN</a></li>
+          </ul>
+        </div>
+
+        <div class="research-card">
+          <h3>Engineering Career Centre</h3>
+          <ul>
+            <li>Supports PEY Co-op and ESIP.</li>
+            <li>Hosts workshops and events throughout the year.</li>
+            <li><a href="http://engineeringcareers.utoronto.ca/" target="_blank" rel="noopener">Visit ECC</a></li>
+          </ul>
+        </div>
+
+        <div class="research-card">
+          <h3>CLNx</h3>
+          <ul>
+            <li><strong>Career Learning Network</strong></li>
+            <li>Apply for Work-Study roles (On/Off campus).</li>
+            <li>Access Co-Curricular Record.</li>
+            <li><a href="http://cln.utoronto.ca/" target="_blank" rel="noopener">Log in to CLNx</a></li>
+          </ul>
+        </div>
+
+      </div>
+      
+      <div class="pd-button-group" style="margin-top: 3rem; justify-content: center;">
+        <a class="pd-button" href="#top">Back to Top</a>
+      </div>
+    </section>
+
+  </main>
+
+  <csche-footer></csche-footer>
+
 </body>
 </html>

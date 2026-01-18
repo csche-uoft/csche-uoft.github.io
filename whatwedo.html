@@ -3,127 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Professional Development | CSChE UofT</title>
+  <title>What We Do | CSChE UofT</title>
+  <meta name="description" content="Overview of CSChE U of T's activities: Professional Development, Industry Mentorship, and Community Outreach." />
+  <link rel="icon" type="image/png" href="images/logochat.png">
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/tabletop@1.6.0/tabletop.min.js"></script>
-</head>
+  <script src="main.js" defer></script>
 
-<script>
-(function () {
-  const bp = 768; // behave as "mobile" at this width and below
-  const root = document.documentElement;
-  const header = document.querySelector('.header-container');
-  const menuBar = document.querySelector('.main-menu');
-  if (!header || !menuBar) return;
-
-  let btn;
-
-  function setState() {
-    if (window.innerWidth <= bp) {
-      if (!btn) {
-        btn = document.createElement('button');
-        btn.className = 'menu-toggle';
-        btn.setAttribute('aria-expanded', 'false');
-        btn.setAttribute('aria-controls', 'csche-nav');
-        btn.innerHTML = 'Menu';
-        // ensure the UL has an id for aria-controls
-        const ul = menuBar.querySelector('ul');
-        if (ul && !ul.id) ul.id = 'csche-nav';
-        // put the button at the right end of the header bar
-        header.appendChild(btn);
-        btn.addEventListener('click', () => {
-          const open = root.classList.toggle('nav-open');
-          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        });
-      }
-    } else {
-      root.classList.remove('nav-open');
-      if (btn) { btn.remove(); btn = null; }
+  <style>
+    .banner-container {
+      margin-top: 3rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
-  }
-
-  setState();
-  window.addEventListener('resize', setState, { passive: true });
-})();
-</script>
-
-
+    .banner-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <img src="images/logochat.png" alt="CSChE Logo" class="logo" />
 
-      <!-- NEW: mobile-only U of T line -->
-      <div class="mobile-uoft" aria-hidden="true">
-        <span>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING:</span><br>
-        <span>UNIVERSITY OF TORONTO</span>
+  <csche-header></csche-header>
+
+  <main class="container">
+    <section style="text-align: center; max-width: 900px; margin: 0 auto;">
+      <h2 style="border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; display: inline-block;">
+        What We Do
+      </h2>
+      
+      <p style="margin-top: 1.5rem; color: #555; font-size: 1.1rem; line-height: 1.8;">
+        We run extensive programming all year to enhance your professional growth and industry readiness. 
+        Whether you're exploring internships, connecting with mentors, or giving back through outreach, 
+        our programming is designed to support every step of your journey.
+      </p>
+
+      <p style="margin-top: 1rem; color: #555;">
+        Check out the categories below to learn more about our annual events.
+      </p>
+
+      <div class="pd-button-group" style="justify-content: center; margin-top: 2rem;">
+        <a href="pd.html" class="pd-button">Professional Development</a>
+        <a href="industry.html" class="pd-button">Industry Mentorship</a>
+        <a href="outreach.html" class="pd-button">Outreach Events</a>
       </div>
+    </section>
 
-      <div class="header-text">
-        <h1>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING</h1>
-        <h2>UNIVERSITY OF TORONTO CHAPTER</h2>
+    <section>
+      <div class="banner-container">
+        <img src="images/group2024.jpg" alt="CSChE UofT Team Group Photo" loading="lazy" />
       </div>
-    </div>
-  </header>
+    </section>
+  </main>
 
-  <!-- SAME NAVIGATION -->
-  <nav class="main-menu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li>
-        <a href="whatwedo.html">What We Do</a>
-        <ul class="dropdown">
-          <li><a href="pd.html">Professional Development</a></li>
-          <li><a href="industry.html">Industry Mentorship</a></li>
-          <li><a href="outreach.html">Outreach Events</a></li>
-        </ul>
-      </li>
-      <li><a href="ccec.html">CCEC</a></li>
-      <li>
-        <a href="opportunities.html">Opportunities</a>
-        <ul class="dropdown">
-          <li><a href="scholarships.html">Scholarships</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="pey.html">PEY</a></li>
-        </ul>
-      </li>
-      <li><a href="team.html">Meet the Team</a></li>
-      <li><a href="contactus.html">Contact Us</a></li>
-    </ul>
-  </nav>
+  <csche-footer></csche-footer>
 
-
-  <section class="pd-events">
-  <h2>What We Do</h2>
-
-  <p class="pd-intro">
-    We run extensive programming all year to enhance your professional growth and industry readiness. Whether you're exploring 
-    internships, connecting with mentors, or giving back through outreach, our programming is designed to support every step of 
-    your journey. Check out our below categories to learn more about some of our annual events. 
-  </p>
-
-  <div class="pd-button-group">
-    <a href="pd.html" class="pd-button">Professional Development</a>
-    <a href="industry.html" class="pd-button">Industry Mentorship</a>
-    <a href="outreach.html" class="pd-button">Outreach Events</a>
-  </div>
-</section>
-
-<section class="what-we-do-image">
-  <img src="images/group2024.jpg" alt="Professional Development Banner" />
-</section>
-
-
-  </section>
-
-   <!-- SAME FOOTER -->
-  <footer class="footer">
-    <p>Connect with us:</p>
-    <div class="social-icons">
-      <a href="https://instagram.com/csche_uoft" target="_blank"><img src="images/instagram.webp" alt="Instagram" /></a>
-      <a href="https://www.linkedin.com/company/cscheuoft/" target="_blank"><img src="images/linkedin.webp" alt="LinkedIn" /></a>
-    </div>
-  </footer>
 </body>
 </html>

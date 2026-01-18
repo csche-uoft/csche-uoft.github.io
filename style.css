@@ -1,1124 +1,204 @@
+:root {
+  /* CANADIAN RED THEME */
+  --primary: #D80621;  /* Standard Canadian Red */
+  --primary-dark: #b0051a; /* Darker red for hover states */
+  --uoft-blue: #002A5C; /* UofT Blue (used for accents/footer) */
+  --text-dark: #2c3e50;
+  --text-light: #666;
+  --bg-light: #f4f4f4;
+  --white: #ffffff;
+  --nav-height: 80px;
+}
+
+/* Reset & Global */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  background-color: #f5f0e6; /* beige tone */
-}
-
-header {
-  background-color: #8B0000; /* dark red */
-  padding: 1.5rem 2rem;
-  color: white;
-}
-
-.header-container {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.logo {
-  height: 80px;
-  width: auto;
-  flex-shrink: 0;
-}
-
-.header-text h1 {
-  font-family: "Times New Roman", serif;
-  font-size: 1.8rem;
-  font-weight: normal;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-.header-text h2 {
-  font-family: "Times New Roman", serif;
-  font-size: 1.2rem;
-  font-weight: normal;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  margin: 0.3rem 0 0 0;
-  opacity: 0.85;
-}
-
-/* Menu Styles */
-.main-menu {
-  background: white;
-  text-align: center;
-  padding: 0.5rem 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 600;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.main-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: inline-flex;
-  gap: 2rem;
-}
-
-.main-menu ul li a {
-  text-decoration: none;
-  color: #333;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-.main-menu ul li a:hover {
-  color: #8B0000; /* Dark red highlight */
-}
-
-.main-menu ul li {
-  position: relative; /* Needed to position dropdown */
-}
-
-/* Dropdown container */
-.main-menu ul li ul.dropdown {
-  display: none;              /* Hide dropdown initially */
-  position: absolute;
-  top: 100%;                 /* Position below parent */
-  left: 0;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 4px;
-  padding: 0.5rem 0;
-  min-width: 180px;
-  flex-direction: column;
-  z-index: 1000;
-}
-
-/* Show dropdown on parent hover */
-.main-menu ul li:hover > ul.dropdown {
-  display: flex;
-}
-
-/* Dropdown list items */
-.main-menu ul li ul.dropdown li {
-  width: 100%;
-}
-
-/* Dropdown links */
-.main-menu ul li ul.dropdown li a {
-  display: block;
-  padding: 0.5rem 1rem;
-  font-size: 0.95rem;
-  color: #333;
-  white-space: nowrap;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Dropdown link hover */
-.main-menu ul li ul.dropdown li a:hover {
-  background-color: #8B0000;
-  color: white;
-}
-
-
-/* Carousel Styles */
-.carousel {
-  position: relative;
-  width: 100vw;           /* Full viewport width */
-  height: 450px;          /* Set a fixed height or use responsive */
-  overflow: hidden;
-  box-shadow: none;       /* Remove shadow or keep as you like */
-  border-radius: 0;       /* Remove rounded corners for flush edges */
-}
-
-.carousel-slide {
-  display: none;
-  position: relative;
-  width: 100vw;           /* Make each slide full width */
-  height: 100%;           /* Fill the carousel height */
-}
-
-.carousel-slide.active {
-  display: block;
-}
-
-.carousel-slide img {
-  width: 100vw;           /* Full width */
-  height: 450px;          /* Same as carousel height */
-  object-fit: cover;      /* Crop image nicely */
-  display: block;
-  border-radius: 0;       /* No rounding */
-}
-
-.carousel-slide .overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100vw;           /* Full width overlay */
-  padding: 1rem 2rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-
-/* Carousel navigation buttons */
-.carousel-prev, .carousel-next {
-  position: absolute;
-  top: 50%;
-  background-color: rgba(0,0,0,0.4);
-  border: none;
-  color: white;
-  font-size: 2rem;
-  padding: 0.4rem 1rem;
-  cursor: pointer;
-  transform: translateY(-50%);
-  border-radius: 4px;
-  user-select: none;
-}
-
-.carousel-prev {
-  left: 10px;
-}
-
-.carousel-next {
-  right: 10px;
-}
-
-.about-section {
-  background-color: #f5f0e6; /* beige tone */
-  padding: 3rem 2rem;
-  text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.about-section h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #8B0000;
-}
-
-.about-section p {
-  max-width: 800px;
-  margin: 0 auto;
-  font-size: 1.25rem;
-  font-weight: 500;
-  line-height: 1.8;
-  color: #333;
-}
-
-.about-section .button-group {
-  display: flex;
-  justify-content: center;  /* center the buttons */
-  gap: 1rem;                /* space between buttons */
-  margin-top: 3rem;
-  margin-bottom: 4rem;
-}
-
-.about-section .button {
-  flex: 1;                  /* equal width */
-  max-width: 180px;         /* optional max width */
-  padding: 0.75rem 0;       /* vertical padding only, width controlled by flex */
-  background-color: #8B0000;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  text-align: center;
-  transition: background-color 0.3s ease;
-  box-sizing: border-box;   /* ensure padding included in width */
-}
-
-.about-section .button:hover {
-  background-color: #600000;
-}
-
-
-.conference-alert {
-  background-color: #f5f5dc; /* beige */
-  padding: 2rem 1rem;
-  text-align: center;
-  font-size: 1.1rem;
+  color: var(--text-dark);
   line-height: 1.6;
-  color: #333;
+  background-color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.conference-alert .button {
-  background-color: #8B0000;
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+/* --- HEADER (Centralized) --- */
+header {
+  background: var(--white);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-top: 5px solid var(--primary); /* Red top border */
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--nav-height);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.logo-area { display: flex; align-items: center; gap: 1rem; }
+.logo { height: 55px; width: auto; }
+.logo-text h1 { 
+  font-size: 1.4rem; 
+  color: var(--primary); 
+  font-weight: 800; 
+  line-height: 1.1;
+  /* text-transform: uppercase; */
+}
+.logo-text h2 { 
+  font-size: 0.85rem; 
+  color: var(--text-light); 
+  font-weight: 600; 
+  text-transform: uppercase; 
+  letter-spacing: 1px;
+}
+
+/* Desktop Navigation */
+.main-nav ul { display: flex; gap: 2rem; align-items: center; }
+.main-nav a { 
+  font-weight: 600; 
+  font-size: 0.95rem; 
+  color: var(--text-dark);
+  padding: 0.5rem 0;
+  position: relative;
+}
+/* Red underline on hover */
+.main-nav a:hover, .main-nav a.active { color: var(--primary); }
+.main-nav a::after {
+  content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0;
+  background: var(--primary); transition: 0.3s;
+}
+.main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
+
+/* Dropdowns */
+.has-dropdown { position: relative; }
+.dropdown {
+  position: absolute; top: 100%; left: -1rem;
+  background: var(--white);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  min-width: 220px;
+  opacity: 0; visibility: hidden; transform: translateY(10px);
+  transition: 0.2s ease;
+  border-radius: 4px;
+  padding: 0.5rem 0;
+}
+.has-dropdown:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown li a { 
+  padding: 0.8rem 1.5rem; 
+  display: block; 
+  font-size: 0.9rem;
+}
+.dropdown li a:hover { background: var(--bg-light); color: var(--primary); }
+.dropdown li a::after { display: none; } /* No underline in dropdown */
+
+/* Mobile Menu Button */
+.menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--text-dark); }
+
+/* --- SECTIONS --- */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+section { padding: 4rem 0; }
+
+/* Buttons */
+.pd-button-group { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+.pd-button {
+  background: var(--primary);
   color: white;
-  padding: 0.6rem 1.2rem;
-  border: none;
+  padding: 0.8rem 1.6rem;
   border-radius: 4px;
   font-weight: bold;
-  text-decoration: none;
-  display: inline-block;
-  margin-top: 1rem;
-  transition: background-color 0.3s ease;
+  font-size: 0.95rem;
+  border: 2px solid var(--primary);
+}
+.pd-button:hover { 
+  background: var(--primary-dark); 
+  border-color: var(--primary-dark); 
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(216, 6, 33, 0.3);
 }
 
-.conference-alert .button:hover {
-  background-color: #a00000;
+/* Secondary/Outline Button */
+.pd-button.outline {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
 }
+.pd-button.outline:hover { background: var(--primary); color: white; }
 
-.footer {
-  background-color: #8B0000;
+/* Tables */
+.pd-table { 
+  width: 100%; border-collapse: collapse; 
+  background: white; margin-top: 2rem; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+  border-radius: 8px; overflow: hidden;
+}
+.pd-table th { background: var(--uoft-blue); color: white; padding: 1rem; text-align: left; }
+.pd-table td { padding: 1.5rem; border-bottom: 1px solid #eee; }
+.pd-table strong { color: var(--primary); font-size: 1.1rem; display: block; margin-bottom: 0.5rem; }
+
+/* --- FOOTER --- */
+footer {
+  margin-top: auto;
+  background: var(--uoft-blue); /* Keep footer blue for UofT branding */
   color: white;
-  padding: 1.5rem 0;
-  text-align: center;
-  font-size: 1rem;
-}
-
-.footer .social-icons {
-  margin-top: 0.5rem;
-}
-
-.footer .social-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.footer .social-icons a img {
-  width: 30px;
-  height: 30px;
-  margin: 0 0.5rem;
-  transition: transform 0.2s ease;
-}
-
-.footer .social-icons a img:hover {
-  transform: scale(1.15);
-}
-
-.internship-database {
-  max-width: 900px;
-  margin: 3rem auto;
-  text-align: left;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-#searchInput {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-#internshipTable {
-  width: 100%;
-  border-collapse: collapse;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  background-color: #faf7f0;
-}
-
-#internshipTable th, #internshipTable td {
-  padding: 0.8rem 1rem;
-  border-bottom: 1px solid #ddd;
-}
-
-#internshipTable th {
-  background-color: #8B0000;
-  color: white;
-  font-weight: 700;
-}
-
-#internshipTable tr:hover {
-  background-color: #f5f0e6;
-}
-
-#internshipTable {
-  width: 100%;
-  border-collapse: collapse;
-  /* Optional: for neat borders */
-}
-
-#internshipTable thead, 
-#internshipTable tbody tr {
-  display: table;
-  width: 100%;
-  table-layout: fixed; /* keep columns aligned */
-}
-
-#internshipTable thead {
-  /* Fix the header row so it stays visible */
-  width: calc(100% - 1em);
-}
-
-#internshipTable tbody {
-  display: block;
-  max-height: 300px; /* height to show approx 5 rows, adjust as needed */
-  overflow-y: auto;
-  width: 100%;
-}
-
-.pd-events {
-  max-width: 900px;
-  margin: 3rem auto;
-  padding: 0 1rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-  text-align: left;
-}
-
-.pd-events h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: #8B0000;
-  border-bottom: 3px solid #8B0000;
-  padding-bottom: 0.3rem;
-}
-
-.pd-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.pd-table tr {
-  border-bottom: 1px solid #ccc;
-  vertical-align: top;
-}
-
-.event-info {
-  padding: 1rem 1.5rem 1rem 0;
-  width: 75%;
-}
-
-.event-info strong {
-  font-size: 1.2rem;
-  color: #8B0000;
-  display: block;
-  margin-bottom: 0.4rem;
-}
-
-.event-info p {
-  font-weight: 500;
-  line-height: 1.5;
-  margin: 0;
-  color: #555;
-}
-
-.event-image {
-  width: 25%;
-  padding: 1rem 0;
-  text-align: center;
-}
-
-.event-image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(139, 0, 0, 0.15);
-}
-
-.pd-intro {
-  font-size: 1.15rem;
-  line-height: 1.7;
-  margin-bottom: 2rem;
-  max-width: 100%;
-  color: #444;
-}
-
-.pd-button-group {
-  display: flex;
-  justify-content: center;
-  gap: 1.2rem;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
-}
-
-.pd-button {
-  padding: 0.8rem 1.5rem;
-  background-color: #8B0000;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-  text-align: center;
-  min-width: 200px;
-}
-
-.pd-button:hover {
-  background-color: #600000;
-}
-
-.what-we-do-image {
-  padding: 2rem 2rem 4rem;
-  text-align: center;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.what-we-do-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* === Research page enhancements (scoped) === */
-.research-page .pd-events {
-  font-size: 1.1rem;
-  line-height: 1.7;
-}
-
-.research-page .pd-events h2 {
-  font-size: 2.4rem;
-}
-
-.research-page .pd-table td.event-info strong {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #8B0000;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-.research-page .pd-table td.event-info ul {
-  margin: 0.5rem 0 1.1rem 1.5rem;
-  padding: 0;
-}
-
-.research-page .pd-table td.event-info ul li {
-  list-style: disc;
-  margin-bottom: 0.45rem;
-}
-
-/* Only style normal content links, NOT the red buttons */
-.research-page .pd-events a:not(.pd-button) {
-  color: #8B0000;
-  font-weight: 600;
-  text-decoration: underline;
-}
-.research-page .pd-events a:not(.pd-button):hover {
-  color: #600000;
-}
-
-/* Ensure button text stays white */
-.research-page .pd-button { color: #fff; }
-
-/* ==== CSChE Conference Page (ccec.html only) ==== */
-.ccec-page .pd-intro {
-  font-size: 1.1rem;
-  line-height: 1.7;
-}
-
-.ccec-page .pd-events h2 {
-  font-size: 2.4rem;
-}
-
-/* Small utility emphasis that won't blow up list spacing */
-.ccec-page .emph { font-weight: 700; }
-
-/* Inline labels like “Dates”, “Location”, “Eligibility” */
-.ccec-page .label {
-  font-weight: 700;
-}
-
-/* Bullet list spacing & consistent weight */
-.ccec-page .pd-table .event-info ul {
-  margin: 0.5rem 0 1.1rem 1.5rem;
-  padding: 0;
-}
-.ccec-page .pd-table .event-info ul li {
-  list-style: disc;
-  margin-bottom: 0.45rem;
-  font-weight: 500; /* keeps bullets readable without random bolding */
-}
-
-/* Section headings inside table blocks */
-.ccec-page .pd-table .event-info > strong {
-  display: block;
-  margin-bottom: 0.4rem;
-  color: #8B0000;
-  font-size: 1.15rem;
-  font-weight: 700;
-}
-
-/* Style normal content links but NOT red buttons */
-.ccec-page .pd-events a:not(.pd-button) {
-  color: #8B0000;
-  font-weight: 600;
-  text-decoration: underline;
-}
-.ccec-page .pd-events a:not(.pd-button):hover {
-  color: #600000;
-}
-
-/* === Team Page In-Progress Banner === */
-.team-page .in-progress-banner {
-  background-color: #ffeb99; /* soft yellow */
   text-align: center;
   padding: 3rem 1rem;
-  margin: 3rem auto;
-  max-width: 1000px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.footer-text { font-size: 0.9rem; opacity: 0.8; margin-bottom: 1rem; }
+.social-icons { 
+  display: flex; 
+  justify-content: center; 
+  gap: 1.5rem; 
+  margin-top: 1rem; 
 }
 
-.team-page .in-progress-banner h2 {
-  color: #8B0000; /* dark red for theme consistency */
-  font-size: 2rem;
-  margin-bottom: 1rem;
+.social-icons img { 
+  width: 28px; 
+  /* 1. Turn image black, 2. Invert black to SOLID WHITE */
+  filter: brightness(0) invert(1); 
+  transition: 0.3s; 
 }
 
-.team-page .in-progress-banner p {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #333;
+.social-icons img:hover { 
+  opacity: 0.8; 
+  transform: scale(1.1); 
 }
 
-/* ===== CSChE responsive fixes (drop-in) ===== */
-
-/* 0) Safer defaults on small screens */
-html { font-size: clamp(14px, 1.15vw + 10px, 16px); -webkit-text-size-adjust: 100%; }
-body { overflow-x: hidden; }
-
-/* 1) Images/embeds never overflow */
-img, svg, video, iframe, canvas { max-width: 100%; height: auto; display: block; }
-
-/* 2) Header: allow wrapping & scale logo on narrow screens */
-.header-container { flex-wrap: wrap; padding-inline: 1rem; }
-.logo { height: clamp(52px, 5vw + 28px, 80px); }
-
-/* 3) Menu: allow wrapping, shrink gaps on smaller widths */
-.main-menu ul { flex-wrap: wrap; gap: clamp(0.75rem, 3vw, 2rem); }
-
-/* Stack the menu vertically on phones */
+/* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
-  .main-menu ul { display: flex; flex-direction: column; align-items: center; }
-  .main-menu { padding: 0.5rem 1rem; }
-}
-
-/* 4) Carousel: replace 100vw (causes sideways scroll) with 100% and use fluid height */
-.carousel { width: 100%; height: clamp(220px, 40vw, 450px); }
-.carousel-slide { width: 100%; }
-.carousel-slide img { width: 100%; height: clamp(220px, 40vw, 450px); object-fit: cover; }
-.carousel-slide .overlay { width: 100%; padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 2rem); }
-@media (max-width: 480px) {
-  .carousel-slide .overlay { font-size: 1.1rem; }
-}
-
-/* 5) “About” and big headings: scale down gently on mobile */
-.about-section h2,
-.pd-events h2,
-.research-page .pd-events h2,
-.ccec-page .pd-events h2 {
-  font-size: clamp(1.5rem, 3.5vw + 1rem, 2.5rem);
-}
-
-/* Buttons already flex; just ensure they don’t overflow tiny screens */
-.about-section .button-group,
-.pd-button-group { flex-wrap: wrap; }
-.about-section .button { flex: 1 1 140px; max-width: 180px; }
-
-/* 6) Internship database table: keep sticky header, avoid overflow on phones */
-#internshipTable { table-layout: fixed; }
-#internshipTable thead,
-#internshipTable tbody tr { width: 100%; }
-#internshipTable thead { width: 100%; } /* override calc(100% - 1em) on narrow screens */
-
-@media (max-width: 600px) {
-  #internshipTable th, #internshipTable td { padding: 0.6rem 0.6rem; }
-  #internshipTable tbody { max-height: 260px; }
-}
-
-/* 7) PD Events: make the 75%/25% split stack on small screens */
-@media (max-width: 900px) {
-  .event-info, .event-image { width: 100%; padding-right: 0; }
-  .pd-table tr { display: block; }
-  .pd-table td { display: block; }
-  .event-image { text-align: center; padding-top: 0.5rem; }
-}
-
-/* 8) What-we-do image: keep centered and fluid */
-.what-we-do-image { padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 3vw, 2rem) clamp(2rem, 5vw, 4rem); }
-
-/* 9) Footer icons: prevent overflow by shrinking a touch on tiny screens */
-@media (max-width: 420px) {
-  .footer .social-icons a img { width: 26px; height: 26px; }
-}
-
-/* 10) Typography: keep hierarchy but avoid huge titles on phones */
-.header-text h1 { font-size: clamp(1.25rem, 2.2vw + 0.9rem, 1.8rem); }
-.header-text h2 { font-size: clamp(0.95rem, 1.6vw + 0.6rem, 1.2rem); }
-
-/* 11) General last-line defense for fixed widths/heights on small screens */
-@media (max-width: 768px) {
-  [style*="width:"], .fixed, .fixed-width { width: 100% !important; max-width: 100% !important; }
-  [style*="min-width:"], .minw { min-width: 0 !important; }
-  [style*="height:"], .fixed-height { height: auto !important; max-height: 100% !important; }
-}
-
-/* 12) Safer table scrolling container (use if needed)
-   Wrap any wide table in: <div class="table-wrap">…table…</div> */
-.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-
-/* ===== Mobile-only header + dropdown nav (desktop unchanged) ===== */
-
-/* keep header layout flexible */
-.header-container { justify-content: space-between; }
-
-/* mobile tweaks */
-@media (max-width: 768px) {
-  /* compact header row */
-  header { padding: 0.75rem 1rem; }
-  .header-container { gap: 0.75rem; }
-
-  /* smaller logo */
-  .logo { height: 44px; width: auto; }
-
-  /* 2-line title next to logo */
-  .header-text {
-    display: grid;
-    align-content: center;
-    text-align: left;
+  .menu-toggle { display: block; }
+  .logo-text h2 { display: none; } /* Simplify logo on mobile */
+  
+  .main-nav {
+    position: fixed; top: var(--nav-height); right: -100%;
+    width: 85%; height: calc(100vh - var(--nav-height));
+    background: white;
+    flex-direction: column; padding: 2rem;
+    box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
   }
-  .header-text h1,
-  .header-text h2 {
-    margin: 0;
-    line-height: 1.15;
-    letter-spacing: 0.06em; /* reduce big spacing so it fits */
-    text-transform: uppercase;
+  .main-nav.open { right: 0; }
+  .main-nav ul { flex-direction: column; width: 100%; align-items: flex-start; gap: 0; }
+  .main-nav li { width: 100%; border-bottom: 1px solid #eee; }
+  .main-nav a { display: block; padding: 1rem 0; width: 100%; font-size: 1.1rem; }
+  .main-nav a::after { display: none; }
+  
+  /* Mobile Dropdowns */
+  .dropdown {
+    position: static; box-shadow: none;
+    opacity: 1; visibility: visible; transform: none;
+    padding-left: 1.5rem; display: none; background: #f9f9f9;
   }
-  .header-text h1 { font-size: 1rem; font-weight: 700; }
-  .header-text h2 { font-size: 0.85rem; opacity: 0.9; }
-
-  /* turn top menu into dropdown */
-  .main-menu { position: relative; padding: 0.25rem 1rem; }
-  .main-menu ul {
-    display: none;                    /* hidden by default on phone */
-    position: absolute;
-    left: 0; right: 0; top: 100%;
-    background: #fff;
-    margin: 0; padding: 0.5rem 0.75rem 0.75rem;
-    box-shadow: 0 6px 18px rgba(0,0,0,.12);
-    border-radius: 8px;
-    gap: 0.5rem;
-    flex-direction: column;
-    align-items: stretch;
-    z-index: 1000;
-  }
-  /* when open, show the list */
-  .nav-open .main-menu ul { display: flex; }
-
-  /* menu toggle button (injected by JS) */
-  .menu-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #d0d0d0;
-    border-radius: 8px;
-    background: #fff;
-    font: inherit;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  .menu-toggle:focus-visible { outline: 3px solid #4d90fe; outline-offset: 2px; }
-
-  /* dropdown link sizing */
-  .main-menu ul li a { font-size: 1rem; padding: 0.45rem 0.35rem; display: block; }
-
-  /* keep hover dropdowns from desktop from popping */
-  .main-menu ul li:hover > ul.dropdown { display: none; }
-  .main-menu ul li ul.dropdown { position: static; box-shadow: none; padding: 0; }
-}
-
-/* wider than mobile = your current desktop menu untouched */
-
-/* === Fix: only hide mobile menu if JS has prepared it === */
-@media (max-width: 768px) {
-  /* Default on phones = visible (from your earlier rule).
-     When JS adds .nav-ready to <html>, THEN hide and turn into dropdown. */
-  .nav-ready .main-menu ul {
-    display: none;
-    position: absolute;
-    left: 0; right: 0; top: 100%;
-    background: #fff;
-    margin: 0; padding: 0.5rem 0.75rem 0.75rem;
-    box-shadow: 0 6px 18px rgba(0,0,0,.12);
-    border-radius: 8px;
-    gap: 0.5rem;
-    flex-direction: column;
-    align-items: stretch;
-    z-index: 1000;
-  }
-  .nav-ready.nav-open .main-menu ul { display: flex; }
-
-  /* keep the button styling */
-  .menu-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #d0d0d0;
-    border-radius: 8px;
-    background: #fff;
-    font: inherit; font-weight: 600; cursor: pointer;
-  }
-  .menu-toggle:focus-visible { outline: 3px solid #4d90fe; outline-offset: 2px; }
-}
-
-/* Mobile hamburger menu button */
-@media (max-width: 768px) {
-  .menu-toggle {
-    margin-left: auto; /* push to right end of header row */
-    background: none;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-  }
-
-  /* Hamburger icon lines */
-  .menu-toggle .bar {
-    display: block;
-    width: 24px;
-    height: 3px;
-    margin: 4px 0;
-    background-color: white; /* match header text color */
-    border-radius: 2px;
-    transition: 0.3s;
-  }
-
-  /* Dropdown menu panel */
-  .nav-ready .main-menu ul {
-    display: none;
-    position: absolute;
-    left: 0; right: 0; top: 100%;
-    background: #fff;
-    margin: 0;
-    padding: 0.75rem 1rem;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    border-radius: 8px;
-    flex-direction: column;
-    gap: 0.75rem;
-    z-index: 1000;
-  }
-  .nav-ready.nav-open .main-menu ul { display: flex; }
-
-  .main-menu ul li a {
-    display: block;
-    padding: 0.5rem 0.25rem;
-    font-size: 1rem;
-    color: #333;
-  }
-}
-
-/* --- Fix hamburger stacking on phones only --- */
-@media (max-width: 768px) {
-  .menu-toggle {
-    /* make the three bars stack vertically */
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-end;      /* keeps it tight on the right edge */
-    gap: 4px;                   /* space between bars */
-    margin-left: auto;          /* push to right of header row */
-    background: none;
-    border: none;
-    padding: 6px;
-    cursor: pointer;
-  }
-  .menu-toggle .bar {
-    display: block !important;
-    width: 26px;
-    height: 3px;
-    background-color: #fff;
-    border-radius: 2px;
-    margin: 0;                  /* prevent accidental horizontal spacing */
-  }
-}
-
-/* === Mobile header: logo left, hamburger right; title on two lines below === */
-@media (max-width: 768px) {
-  /* top bar spacing */
-  header { padding: 0.75rem 1rem 1rem; }
-
-  /* turn header into two rows:
-     Row 1: [logo] [spacer] [hamburger]
-     Row 2: [title spans full width] */
-  .header-container {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-template-rows: auto auto;
-    align-items: center;
-    gap: 0.5rem 0.75rem;
-    padding-inline: 0; /* keep your max-width centering intact */
-  }
-
-  /* Row 1: logo left */
-  .logo {
-    grid-column: 1;
-    grid-row: 1;
-    height: 44px;    /* smaller on phone */
-    width: auto;
-  }
-
-  /* Row 1: hamburger right (injected by JS) */
-  .menu-toggle {
-    grid-column: 3;
-    grid-row: 1;
-    justify-self: end;
-
-    /* stacked bars */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
-
-    margin-left: auto;
-    background: none;
-    border: none;
-    padding: 6px;
-    cursor: pointer;
-  }
-  .menu-toggle .bar {
-    width: 26px;
-    height: 3px;
-    background-color: #fff; /* white bars on red header */
-    border-radius: 2px;
-  }
-
-  /* Row 2: title spans full width beneath the bar */
-  .header-text {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    text-align: center;
-  }
-
-  /* Keep your desktop font/spacing vibe; allow clean wrapping into 2 lines */
-  .header-text h1,
-  .header-text h2 {
-    font-family: "Times New Roman", serif;
-    text-transform: uppercase;
-    margin: 0;
-    line-height: 1.2;
-    white-space: normal;          /* allow wrap */
-  }
-  .header-text h1 {
-    font-weight: 700;             /* bold first line */
-    letter-spacing: 0.15em;       /* same as your desktop */
-    font-size: 1.8rem;            /* keep your size */
-  }
-  .header-text h2 {
-    font-weight: normal;
-    letter-spacing: 0.25em;       /* same as your desktop */
-    font-size: 1.2rem;
-    opacity: 0.85;
-    margin-top: 0.25rem;
-  }
-
-  /* Dropdown: only hide when JS marks .nav-ready (so menu never "disappears") */
-  .main-menu { position: relative; padding: 0.25rem 1rem; }
-  .nav-ready .main-menu ul {
-    display: none;
-    position: absolute; left: 0; right: 0; top: 100%;
-    background: #fff;
-    margin: 0; padding: 0.75rem 1rem;
-    box-shadow: 0 6px 18px rgba(0,0,0,.15);
-    border-radius: 8px;
-    flex-direction: column; gap: 0.75rem;
-    z-index: 1000;
-  }
-  .nav-ready.nav-open .main-menu ul { display: flex; }
-
-  /* prevent hover submenus from popping on touch */
-  .main-menu ul li:hover > ul.dropdown { display: none; }
-  .main-menu ul li ul.dropdown { position: static; box-shadow: none; padding: 0; }
-}
-
-/* === Mobile-specific header layout (logo, U of T line, then hamburger) === */
-@media (max-width: 768px) {
-  /* 0) Hide the desktop header text block on phones */
-  .header-text { display: none !important; }
-
-  /* 1) Turn header into a single-column, three-row stack */
-  .header-container {
-    display: grid !important;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    justify-items: center;
-    align-items: center;
-    gap: 0.35rem;
-    max-width: 100%; /* keep centered */
-  }
-
-  /* 2) Logo on row 1, centered */
-  .logo {
-    grid-row: 1;
-    height: 48px; /* small but readable */
-    width: auto;
-  }
-
-  /* 3) New UofT line on row 2 (Times New Roman, very small, no spacing, one line) */
-  .mobile-uoft {
-    grid-row: 2;
-    display: block;
-    font-family: "Times New Roman", Times, serif;
-    font-weight: normal;
-    letter-spacing: 0;       /* no spaced-out letters */
-    word-spacing: normal;
-    text-transform: none;    /* keep as typed */
-    white-space: nowrap;     /* force one line */
-    line-height: 1.1;
-    opacity: 0.95;
-    /* keep tiny but scale on ultra-small screens */
-    font-size: clamp(10px, 3.6vw, 14px);
-    color: #fff;             /* white on your dark red header */
-    margin-top: 2px;
-  }
-
-  /* 4) Hamburger button on row 3, centered beneath */
-  .menu-toggle {
-    grid-row: 3 !important;
-    justify-self: center !important;
-    margin-top: 4px;
-    background: none;
-    border: none;
-    padding: 6px;
-  }
-  .menu-toggle .bar {
-    width: 26px;
-    height: 3px;
-    background-color: #fff; /* white bars on red header */
-    border-radius: 2px;
-    display: block;
-    margin: 4px 0;
-  }
-
-  /* 5) Keep mobile dropdown behavior as you already have it */
-  .nav-ready .main-menu ul {
-    display: none;
-    position: absolute; left: 0; right: 0; top: 100%;
-    background: #fff;
-    margin: 0;
-    padding: 0.75rem 1rem;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    border-radius: 8px;
-    flex-direction: column;
-    gap: 0.75rem;
-    z-index: 1000;
-  }
-  .nav-ready.nav-open .main-menu ul { display: flex; }
-}
-
-/* Hide the mobile-only line on desktop by default */
-.mobile-uoft { 
-  display: none !important;
-}
-
-
-/* Hide on desktop by default */
-.mobile-uoft { 
-  display: none !important;
-}
-
-/* Mobile layout: show subtitle (two-line), compact text */
-@media (max-width: 768px) {
-  .mobile-uoft {
-    display: block !important;
-    text-align: center;
-    font-family: "Times New Roman", Times, serif;
-    letter-spacing: 0;
-    white-space: normal;   /* Two lines allowed */
-    line-height: 1.15;
-    font-size: clamp(9px, 3.4vw, 13px); /* Slightly smaller to fit both lines */
-    color: #fff;
-    margin-top: 2px;
-  }
-
-  /* Keep the rest of your mobile header layout rules here (as before) */
-}
-
-/* Desktop and tablets landscape: NEVER show the mobile subtitle */
-@media (min-width: 769px) {
-  .mobile-uoft { display: none !important; }
-}
-
-/* Phones: show mobile subtitle, hide desktop title */
-@media (max-width: 768px) {
-  .mobile-uoft { display: block !important; }
-  .header-text { display: none !important; }
-}
-
-/* === TEAM PAGE === */
-.team-section {
-  max-width: 1100px;
-  margin: 3rem auto;
-  padding: 0 1rem;
-  text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.team-section h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 2.5rem;
-  color: #8B0000;
-}
-
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
-}
-
-.team-card {
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.team-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-}
-
-.team-card img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-}
-
-.team-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.25rem;
-  color: #8B0000;
-}
-
-.team-card .role {
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 0.7rem;
-}
-
-.team-card .bio {
-  font-size: 0.95rem;
-  line-height: 1.4;
-  color: #444;
-}
-
-/* Mobile adjustments */
-@media (max-width: 600px) {
-  .team-card img {
-    height: 220px;
-  }
-  .team-section h2 {
-    font-size: 2rem;
-  }
-}
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* EXACTLY 3 per row */
-  gap: 2rem;
+  .has-dropdown.active .dropdown { display: block; }
+  .has-dropdown > a::after { content: ' +'; float: right; font-weight: bold; }
 }

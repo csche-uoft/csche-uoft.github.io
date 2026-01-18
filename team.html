@@ -4,239 +4,248 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Meet the Team | CSChE UofT</title>
+  <meta name="description" content="Meet the 2025-2026 Executive Team of the Canadian Society for Chemical Engineering U of T Chapter." />
+  <link rel="icon" type="image/png" href="images/logochat.png">
   <link rel="stylesheet" href="style.css" />
-</head>
+  <script src="main.js" defer></script>
 
-<script>
-(function () {
-  const bp = 768; // behave as "mobile" at this width and below
-  const root = document.documentElement;
-  const header = document.querySelector('.header-container');
-  const menuBar = document.querySelector('.main-menu');
-  if (!header || !menuBar) return;
-
-  let btn;
-
-  function setState() {
-    if (window.innerWidth <= bp) {
-      if (!btn) {
-        btn = document.createElement('button');
-        btn.className = 'menu-toggle';
-        btn.setAttribute('aria-expanded', 'false');
-        btn.setAttribute('aria-controls', 'csche-nav');
-        btn.innerHTML = 'Menu';
-        // ensure the UL has an id for aria-controls
-        const ul = menuBar.querySelector('ul');
-        if (ul && !ul.id) ul.id = 'csche-nav';
-        // put the button at the right end of the header bar
-        header.appendChild(btn);
-        btn.addEventListener('click', () => {
-          const open = root.classList.toggle('nav-open');
-          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        });
-      }
-    } else {
-      root.classList.remove('nav-open');
-      if (btn) { btn.remove(); btn = null; }
+  <style>
+    /* 1. Custom Container for Team Page (Wider than normal pages) */
+    .team-container {
+      max-width: 1400px; /* Allows 4 cards across on big screens */
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
-  }
 
-  setState();
-  window.addEventListener('resize', setState, { passive: true });
-})();
-</script>
+    /* 2. The Grid Layout */
+    .team-grid {
+      display: grid;
+      /* Intelligent columns: fits as many 280px cards as possible */
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+      gap: 2rem;
+      padding: 2rem 0 4rem 0;
+    }
 
+    /* 3. Individual Member Card */
+    .team-card {
+      background: white;
+      padding: 2.5rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid #eee;
+      transition: all 0.3s ease;
+      
+      /* FLEXBOX CENTERING (Fixes the "off-center" issue) */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Forces horizontal centering */
+      text-align: center;
+    }
 
-<body class="team-page">
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <img src="images/logochat.png" alt="CSChE Logo" class="logo" />
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(216, 6, 33, 0.15);
+      border-color: var(--primary);
+    }
 
-      <!-- NEW: mobile-only U of T line -->
-      <div class="mobile-uoft" aria-hidden="true">
-        <span>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING:</span><br>
-        <span>UNIVERSITY OF TORONTO</span>
+    /* 4. Circular Profile Image */
+    .team-card img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 1.2rem;
+      border: 4px solid var(--primary); /* Thicker, clear border */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      
+      /* Ensure image itself doesn't stretch */
+      display: block;
+    }
+
+    /* 5. Typography */
+    .team-card h3 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin: 0 0 0.5rem 0;
+      font-weight: 700;
+    }
+
+    .role {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
+    }
+
+    .bio {
+      color: #777;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* 6. Mobile Tweaks */
+    @media (max-width: 768px) {
+      .team-grid {
+        /* On phone, force 1 card per row but not full-screen width */
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+      }
+      .team-card {
+        padding: 2rem;
+        /* Make cards look nicer on mobile */
+        max-width: 350px; 
+        margin: 0 auto; /* Center the card itself */
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <csche-header></csche-header>
+
+  <main class="team-container">
+    <section style="text-align: center; padding-top: 3rem;">
+      <h2 style="border-bottom: 3px solid var(--primary); padding-bottom: 0.5rem; display: inline-block;">
+        Meet the 2025–26 Executive Team
+      </h2>
+      <p style="margin-top: 1rem; color: #555; font-size: 1.1rem;">
+        Our dedicated team of students works hard to bring you events, resources, and community.
+      </p>
+    </section>
+
+    <div class="team-grid">
+
+      <div class="team-card">
+        <img src="images/team/basma.jpeg" alt="Basma Elsabban" loading="lazy">
+        <h3>Basma Elsabban</h3>
+        <p class="role">Chair</p>
+        <p class="bio">ChemE 2T5 + PEY</p>
       </div>
 
-      <div class="header-text">
-        <h1>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING</h1>
-        <h2>UNIVERSITY OF TORONTO CHAPTER</h2>
+      <div class="team-card">
+        <img src="images/team/lorraine.jpeg" alt="Jeslyn Lorraine Winoto" loading="lazy">
+        <h3>Jeslyn Lorraine Winoto</h3>
+        <p class="role">Vice Chair</p>
+        <p class="bio">ChemE 2T6 + PEY</p>
       </div>
-    </div>
-  </header>
 
-  <!-- NAV -->
-  <nav class="main-menu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li>
-        <a href="whatwedo.html">What We Do</a>
-        <ul class="dropdown">
-          <li><a href="pd.html">Professional Development</a></li>
-          <li><a href="industry.html">Industry Mentorship</a></li>
-          <li><a href="outreach.html">Outreach Events</a></li>
-        </ul>
-      </li>
-      <li><a href="ccec.html">CCEC</a></li>
-      <li>
-        <a href="opportunities.html">Opportunities</a>
-        <ul class="dropdown">
-          <li><a href="scholarships.html">Scholarships</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="pey.html">PEY</a></li>
-        </ul>
-      </li>
-      <li><a href="team.html">Meet the Team</a></li>
-      <li><a href="contactus.html">Contact Us</a></li>
-    </ul>
-  </nav>
-
-  <section class="team-section">
-  <h2>Meet the 2025–26 Executive Team</h2>
-
-  <div class="team-grid">
-
-    <!-- TEMPLATE — DUPLICATE FOR EACH MEMBER -->
-    <div class="team-card">
-      <img src="images/team/basma.jpeg" alt="Basma">
-      <h3>Basma Elsabban</h3>
-      <p class="role">Chair</p>
-      <p class="bio">ChemE 2T5+PEY</p>
-    </div>
-
-    <div class="team-card">
-      <img src="images/team/lorraine.jpeg" alt="Lorraine">
-      <h3>Jeslyn Lorraine Winoto</h3>
-      <p class="role">Vice Chair</p>
-      <p class="bio">ChemE 2T6+PEY</p>
-    </div>
-
-    <div class="team-card">
-      <img src="images/team/isaac.jpeg" alt="Isaac">
-      <h3>Isaac Lo</h3>
-      <p class="role">Secretary</p>
-      <p class="bio">ChemE 2T8</p>
-    </div>
-
-    <div class="team-card">
-      <img src="images/team/reese.jpeg" alt="Reese">
-      <h3>Reese Barkhouse</h3>
-      <p class="role">Finance Director</p>
-      <p class="bio">ChemE 2T7</p>
-    </div>
-    
-    <div class="team-card">
-      <img src="images/team/lesley.jpeg" alt="Lesley">
-      <h3>Lesley Ha Tchong</h3>
-      <p class="role">Professional Development Director</p>
-      <p class="bio">ChemE 2T7</p>
-    </div>
-
-    <div class="team-card">
-      <img src="images/team/shresth.jpeg" alt="Shresth">
-      <h3>Shresth Bhargava</h3>
-      <p class="role">Professional Development Director</p>
-      <p class="bio">ChemE 2T5+PEY</p>
-    </div>
-
-    <div class="team-card">
-      <img src="images/team/seca.jpeg" alt="Seca">
-      <h3>Seca McRae</h3>
-      <p class="role">Industry Mentorship Director</p>
-      <p class="bio">ChemE 2T5+PEY</p>
-    </div>
-
-   <div class="team-card">
-      <img src="images/team/taylor.jpeg" alt="Taylor">
-      <h3>Taylor Jones</h3>
-      <p class="role">Industry Mentorship Director</p>
-      <p class="bio">ChemE 2T5+PEY</p>
-    </div>
-
-   <div class="team-card">
-      <img src="images/team/ryan.jpeg" alt="Ryan">
-      <h3>Ryan Xu</h3>
-      <p class="role">Events Director</p>
-      <p class="bio">ChemE 2T8</p>
-    </div>
-
-    <div class="team-card">
-      <img src="images/team/ashton.jpeg" alt="Ashton">
-      <h3>Ashton Raghunandan</h3>
-      <p class="role">Events Director</p>
-      <p class="bio">ChemE 2T7</p>
-    </div>
-    
-
-    <div class="team-card">
-        <img src="images/team/aziz.jpeg" alt="Aziz">
-        <h3>Mohammad Abdul Aziz</h3>
-        <p class="role">Digital Media Director</p>
+      <div class="team-card">
+        <img src="images/team/isaac.jpeg" alt="Isaac Lo" loading="lazy">
+        <h3>Isaac Lo</h3>
+        <p class="role">Secretary</p>
         <p class="bio">ChemE 2T8</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/team/reese.jpeg" alt="Reese Barkhouse" loading="lazy">
+        <h3>Reese Barkhouse</h3>
+        <p class="role">Finance Director</p>
+        <p class="bio">ChemE 2T7</p>
+      </div>
+      
+      <div class="team-card">
+        <img src="images/team/lesley.jpeg" alt="Lesley Ha Tchong" loading="lazy">
+        <h3>Lesley Ha Tchong</h3>
+        <p class="role">PD Director</p>
+        <p class="bio">ChemE 2T7</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/team/shresth.jpeg" alt="Shresth Bhargava" loading="lazy">
+        <h3>Shresth Bhargava</h3>
+        <p class="role">PD Director</p>
+        <p class="bio">ChemE 2T5 + PEY</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/team/seca.jpeg" alt="Seca McRae" loading="lazy">
+        <h3>Seca McRae</h3>
+        <p class="role">Industry Mentorship Director</p>
+        <p class="bio">ChemE 2T5 + PEY</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/team/taylor.jpeg" alt="Taylor Jones" loading="lazy">
+        <h3>Taylor Jones</h3>
+        <p class="role">Industry Mentorship Director</p>
+        <p class="bio">ChemE 2T5 + PEY</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/team/ryan.jpeg" alt="Ryan Xu" loading="lazy">
+        <h3>Ryan Xu</h3>
+        <p class="role">Events Director</p>
+        <p class="bio">ChemE 2T8</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/team/ashton.jpeg" alt="Ashton Raghunandan" loading="lazy">
+        <h3>Ashton Raghunandan</h3>
+        <p class="role">Events Director</p>
+        <p class="bio">ChemE 2T7</p>
+      </div>
+      
+      <div class="team-card">
+          <img src="images/team/aziz.jpeg" alt="Mohammad Abdul Aziz" loading="lazy">
+          <h3>Mohammad Abdul Aziz</h3>
+          <p class="role">Digital Media Director</p>
+          <p class="bio">ChemE 2T8</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/team/melissa.jpeg" alt="Melissa Gonsalves" loading="lazy">
+        <h3>Melissa Gonsalves</h3>
+        <p class="role">Digital Media Director</p>
+        <p class="bio">ChemE 2T6 + PEY</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/team/ashwah.jpeg" alt="Ashwah Aslam" loading="lazy">
+        <h3>Ashwah Aslam</h3>
+        <p class="role">Advertising Director</p>
+        <p class="bio">ChemE 2T8</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/team/jerry.jpeg" alt="Jerry Li" loading="lazy">
+        <h3>Jerry Li</h3>
+        <p class="role">Advertising Director</p>
+        <p class="bio">ChemE 2T8</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/team/mako.jpeg" alt="Mako Darra" loading="lazy">
+        <h3>Mako Darra</h3>
+        <p class="role">4th Year Rep</p>
+        <p class="bio">ChemE 2T5 + PEY</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/team/isaacching.jpeg" alt="Isaac Ching" loading="lazy">
+        <h3>Isaac Ching</h3>
+        <p class="role">3rd Year Rep</p>
+        <p class="bio">ChemE 2T7</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/team/calton.jpeg" alt="Calton Louis Paul" loading="lazy">
+        <h3>Calton Louis Paul</h3>
+        <p class="role">2nd Year Rep</p>
+        <p class="bio">ChemE 2T8</p>
+      </div>    
+
+      <div class="team-card">
+        <img src="images/team/audrey.jpeg" alt="Audrey Jacinto" loading="lazy">
+        <h3>Audrey Jacinto</h3>
+        <p class="role">1st Year Rep</p>
+        <p class="bio">ChemE 2T9</p>
+      </div>
+
     </div>
+  </main>
 
-    <div class="team-card">
-      <img src="images/team/melissa.jpeg" alt="Melissa">
-      <h3>Melissa Gonsalves</h3>
-      <p class="role">Digital Media Director</p>
-      <p class="bio">ChemE 2T6+PEY</p>
-    </div>
+  <csche-footer></csche-footer>
 
-    <div class="team-card">
-      <img src="images/team/ashwah.jpeg" alt="Ashwah">
-      <h3>Ashwah Aslam</h3>
-      <p class="role">Advertising Director</p>
-      <p class="bio">ChemE 2T8</p>
-    </div>
-
-    <div class="team-card">
-      <img src="images/team/jerry.jpeg" alt="Jerry">
-      <h3>Jerry Li</h3>
-      <p class="role">Advertising Director</p>
-      <p class="bio">ChemE 2T8</p>
-    </div>
-
-    <div class="team-card">
-      <img src="images/team/mako.jpeg" alt="Mako">
-      <h3>Mako Darra</h3>
-      <p class="role">4th Year Class Representative</p>
-      <p class="bio">ChemE 2T5+PEY</p>
-    </div>
-
-    <div class="team-card">
-      <img src="images/team/isaacching.jpeg" alt="Isaac Ching">
-      <h3>Isaac Wai Cheung Ching</h3>
-      <p class="role">3rd Year Class Representative</p>
-      <p class="bio">ChemE 2T7</p>
-    </div>
-
-    <div class="team-card">
-      <img src="images/team/calton.jpeg" alt="Calton">
-      <h3>Calton Louis Paul</h3>
-      <p class="role">2nd Year Class Representative</p>
-      <p class="bio">ChemE 2T8</p>
-    </div>    
-
-    <div class="team-card">
-      <img src="images/team/audrey.jpeg" alt="Audrey">
-      <h3>Audrey Jacinto </h3>
-      <p class="role">1st Year Class Representative</p>
-      <p class="bio">ChemE 2T9</p>
-    </div>
-    <!-- Add more cards as needed -->
-
-  </div>
-</section>
-
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>Connect with us:</p>
-    <div class="social-icons">
-      <a href="https://instagram.com/csche_uoft" target="_blank"><img src="images/instagram.webp" alt="Instagram" /></a>
-      <a href="https://www.linkedin.com/company/cscheuoft/" target="_blank"><img src="images/linkedin.webp" alt="LinkedIn" /></a>
-    </div>
-  </footer>
 </body>
 </html>

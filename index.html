@@ -3,222 +3,152 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CSChE UofT</title>
+  <title>CSChE UofT | Canadian Society for Chemical Engineering</title>
+  <meta name="description" content="Official University of Toronto Chapter of the Canadian Society for Chemical Engineering. Professional development, mentorship, and community." />
+  <link rel="icon" type="image/png" href="images/logochat.png">
   <link rel="stylesheet" href="style.css" />
-</head>
+  <script src="main.js" defer></script>
 
-<body>
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <img src="images/logochat.png" alt="CSChE Logo" class="logo" />
-
-      <!-- NEW: mobile-only U of T line -->
-      <div class="mobile-uoft" aria-hidden="true">
-        <span>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING:</span><br>
-        <span>UNIVERSITY OF TORONTO</span>
-      </div>
-
-      <div class="header-text">
-        <h1>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING</h1>
-        <h2>UNIVERSITY OF TORONTO CHAPTER</h2>
-      </div>
-    </div>
-  </header>
-
-<nav class="main-menu">
-  <ul>
-    <li><a href="index.html">Home</a></li>
-
-    <li>
-      <a href="whatwedo.html">What We Do</a>
-      <ul class="dropdown">
-        <li><a href="pd.html">Professional Development</a></li>
-        <li><a href="industry.html">Industry Mentorship</a></li>
-        <li><a href="outreach.html">Outreach Events</a></li>
-      </ul>
-    </li>
-
-    <li>
-      <a href="ccec.html">CCEC</a>
-    </li>
-
-    <li><a href="opportunities.html">Opportunities</a>
-          <ul class="dropdown">
-        <li><a href="scholarships.html">Scholarships</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="pey.html">PEY</a></li>
-      </ul>
-    </li>
-
-    <li><a href="team.html">Meet the Team</a></li>
-
-    <li>
-      <a href="contactus.html">Contact Us</a>
-      </ul>
-    </li>
-</nav>
-
-<section class="carousel">
-  <div class="carousel-slide active">
-    <img src="images/car1.jpg" alt="Professional Development" />
-    <div class="overlay">
-      <p>Build your student network</p>
-    </div>
-  </div>
-  <div class="carousel-slide">
-    <img src="images/car2.png" alt="Student Competitions" />
-    <div class="overlay">
-      <p>Attend national conferences</p>
-    </div>
-  </div>
-  <div class="carousel-slide">
-    <img src="images/car3.png" alt="Outreach" />
-    <div class="overlay">
-      <p>Present your research</p>
-    </div>
-  </div>
-  <div class="carousel-slide">
-    <img src="images/car4.png" alt="Industry Events" />
-    <div class="overlay">
-      <p>Explore our labs</p>
-    </div>
-  </div>
-  <div class="carousel-slide">
-    <img src="images/car5.png" alt="Industry Events" />
-    <div class="overlay">
-      <p>Enjoy the ride</p>
-    </div>
-  </div>
-  <div class="carousel-slide">
-    <img src="images/car6.png" alt="Industry Events" />
-    <div class="overlay">
-      <p>Visit production plants</p>
-    </div>
-  </div>
-  <button class="carousel-prev">◀</button>
-  <button class="carousel-next">▶</button>
-</section>
-
-<script>
-  const slides = document.querySelectorAll('.carousel-slide');
-  const nextBtn = document.querySelector('.carousel-next');
-  const prevBtn = document.querySelector('.carousel-prev');
-  let current = 0;
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.remove('active');
-      if (i === index) slide.classList.add('active');
-    });
-  }
-
-  // Manual controls
-  nextBtn.addEventListener('click', () => {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  });
-
-  prevBtn.addEventListener('click', () => {
-    current = (current - 1 + slides.length) % slides.length;
-    showSlide(current);
-  });
-
-  // Autoplay every 5 seconds
-  setInterval(() => {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  }, 5000);
-</script>
-
-<section class="about-section">
-  <h2>About Us</h2>
-  <p>
-    Welcome to the official website of CSChE U of T — the University of Toronto’s student chapter of the Canadian Society for Chemical Engineering.
-    We empower chemical engineering students through professional development, industry networking, plant tours, and community outreach.
-
-    Whether you're a student looking to expand your horizons or a company interested in partnering with the next generation of engineers,
-    our platform is your gateway to connect, engage, and grow.
-  </p>
-
-  <div class="button-group">
-    <a href="whatwedo.html" class="button">Learn More</a>
-    <a href="team.html" class="button">Meet the Team</a>
-    <a href="contact.html" class="button">Contact Us</a>
-  </div>
-</section>
-
-
-<section class="conference-alert">
-  <p>
-    🇨🇦 The 2025 Canadian Chemical Engineering Conference is coming soon!
-    <br />
-    Don't miss your chance to network, compete, and showcase your research.
-  </p>
-  <a href="ccec.html" class="button">View Conference Page</a>
-</section>
-
-  <footer class="footer">
-    <p>Connect with us:</p>
-    <div class="social-icons">
-      <a href="https://instagram.com/csche_uoft" target="_blank"><img src="images/instagram.webp" alt="Instagram" /></a>
-      <a href="https://www.linkedin.com/company/cscheuoft/" target="_blank"><img src="images/linkedin.webp" alt="LinkedIn" /></a>
-    </div>
-  </footer>
-
-
-<script>
-(function () {
-  const bp = 768;
-  const root   = document.documentElement;
-  const header = document.querySelector('.header-container');
-  const menuBar= document.querySelector('.main-menu');
-  const list   = menuBar ? menuBar.querySelector('ul') : null;
-
-  // If the DOM isn't ready, try again after load
-  if (!header || !menuBar || !list) {
-    window.addEventListener('DOMContentLoaded', init, { once: true });
-  } else {
-    init();
-  }
-
-  function init() {
-    const headerEl = document.querySelector('.header-container');
-    const menuEl   = document.querySelector('.main-menu');
-    const ul       = menuEl ? menuEl.querySelector('ul') : null;
-    if (!headerEl || !menuEl || !ul) return; // leave desktop/menu intact
-
-    root.classList.add('nav-ready');          // enables mobile dropdown CSS
-    if (!ul.id) ul.id = 'csche-nav';
-
-    let btn;
-
-    function mount() {
-      if (window.innerWidth <= bp) {
-        if (!btn) {
-          btn = document.createElement('button');
-          btn.className = 'menu-toggle';
-          btn.setAttribute('aria-expanded', 'false');
-          btn.setAttribute('aria-controls', ul.id);
-          // three-bar hamburger
-          btn.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
-          headerEl.appendChild(btn);
-          btn.addEventListener('click', () => {
-            const open = root.classList.toggle('nav-open');
-            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-          });
-        }
-      } else {
-        root.classList.remove('nav-open');
-        if (btn) { btn.remove(); btn = null; }
-      }
+  <style>
+    /* 1. The Container */
+    .hero {
+      position: relative;
+      /* Height fallback */
+      min-height: 500px; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: white;
+      text-align: center;
     }
 
-    mount();
-    window.addEventListener('resize', mount, { passive: true });
-  }
-})();
-</script>
+    /* 2. The Background Images */
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .hero-bg img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures image covers the area without stretching */
+      opacity: 0;        /* Hidden by default */
+      transition: opacity 1.5s ease-in-out; /* Smooth fade */
+    }
+
+    .hero-bg img.active {
+      opacity: 1; /* Show active image */
+    }
+
+    /* 3. The Red Tint Overlay */
+    /* This sits on top of images but below text to ensure readability and Red Theme */
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(216, 6, 33, 0.85); /* Canadian Red with 85% opacity */
+      z-index: 1;
+    }
+
+    /* 4. The Content (Text) */
+    .hero-content {
+      position: relative;
+      z-index: 2; /* Sits on top of everything */
+      padding: 4rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <csche-header></csche-header>
+
+  <main>
+    <section class="hero">
+      
+      <div class="hero-bg">
+        <img src="images/car1.jpg" class="active" alt="Students networking" />
+        <img src="images/car2.png" alt="Conference hall" />
+        <img src="images/car3.png" alt="Research presentation" />
+        <img src="images/car4.png" alt="Lab equipment" />
+        <img src="images/car5.png" alt="Social event" />
+        <img src="images/car6.png" alt="Toronto Skyline" />
+      </div>
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content container">
+        <h1 style="color: white; font-size: 2.5rem; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+          CANADIAN SOCIETY FOR CHEMICAL ENGINEERING
+        </h1>
+        <h2 style="color: white; font-size: 1.5rem; font-weight: 300; opacity: 0.95; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+          UNIVERSITY OF TORONTO CHAPTER
+        </h2>
+        <p style="max-width: 700px; margin: 2rem auto; font-size: 1.1rem; line-height: 1.8; font-weight: 500;">
+          Connecting students with industry, research, and each other. We are the bridge between your academic life and your professional future.
+        </p>
+        <div class="pd-button-group" style="justify-content: center;">
+          <a href="whatwedo.html" class="pd-button" style="background: white; color: var(--primary); border:none;">Explore Our Events</a>
+          <a href="team.html" class="pd-button" style="background: transparent; border: 2px solid white; color: white;">Meet the Team</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 style="text-align: center;">About Our Chapter</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--text-light);">
+          CSChE U of T empowers chemical engineering students through professional development, plant tours, and community outreach. 
+          Whether you're a student looking to expand your horizons or a company interested in partnership, we are your gateway to the Skule™ community.
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
+          <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center;">
+            <h3 style="color: var(--primary);">Professional Development</h3>
+            <p>Resumé critiques, industry mixers, and mentorship programs to launch your career.</p>
+          </div>
+          <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center;">
+            <h3 style="color: var(--primary);">Research & Conferences</h3>
+            <p>Join the delegation to the national CCEC conference or present your work at our symposium.</p>
+          </div>
+          <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center;">
+            <h3 style="color: var(--primary);">Community</h3>
+            <p>From social nights to outreach events, we build a tight-knit community for ChemE students.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <csche-footer></csche-footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const images = document.querySelectorAll('.hero-bg img');
+      let currentIndex = 0;
+      
+      // Change image every 5 seconds
+      setInterval(() => {
+        // Remove active class from current
+        images[currentIndex].classList.remove('active');
+        
+        // Calculate next index (loop back to 0 at the end)
+        currentIndex = (currentIndex + 1) % images.length;
+        
+        // Add active class to next
+        images[currentIndex].classList.add('active');
+      }, 5000);
+    });
+  </script>
 
 </body>
 </html>

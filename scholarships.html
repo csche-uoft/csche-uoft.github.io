@@ -3,287 +3,269 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How to Finance Your Education | CSChE UofT</title>
+  <title>Scholarships | CSChE UofT</title>
+  <meta name="description" content="A comprehensive list of scholarships, awards, and grants available to Chemical Engineering students at U of T." />
+  <link rel="icon" type="image/png" href="images/logochat.png">
   <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
+
   <style>
-    /* extra styles just for collapsible sections */
-    .scholarship-group {
-      margin-bottom: 1.5rem;
-    }
+    /* 1. Accordion Button */
     .toggle-btn {
-      background: #004080;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      cursor: pointer;
-      font-size: 1rem;
-      margin-bottom: 8px;
-      border-radius: 6px;
-    }
-    .toggle-btn:hover {
-      background: #0059b3;
-    }
-    .pd-table {
       width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 1rem;
-    }
-    .pd-table th, .pd-table td {
-      border: 1px solid #ccc;
-      padding: 8px;
       text-align: left;
+      background: white;
+      color: var(--text-dark);
+      border: 1px solid #ddd;
+      padding: 1.2rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
     }
-    .hidden {
+
+    .toggle-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: #fffafa; /* Very light red tint */
+    }
+
+    .toggle-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* 2. The Icon (+ / -) */
+    .toggle-icon {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    /* 3. The Hidden Content */
+    .toggle-content {
       display: none;
+      padding: 1rem 0;
+      animation: slideDown 0.3s ease-out;
+    }
+    
+    .toggle-content.show {
+      display: block;
+    }
+
+    /* 4. Responsive Table Wrapper */
+    .table-wrapper {
+      overflow-x: auto; /* Allows table to scroll on phone */
+      border-radius: 8px;
+      border: 1px solid #eee;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-
-<script>
-(function () {
-  const bp = 768; // behave as "mobile" at this width and below
-  const root = document.documentElement;
-  const header = document.querySelector('.header-container');
-  const menuBar = document.querySelector('.main-menu');
-  if (!header || !menuBar) return;
-
-  let btn;
-
-  function setState() {
-    if (window.innerWidth <= bp) {
-      if (!btn) {
-        btn = document.createElement('button');
-        btn.className = 'menu-toggle';
-        btn.setAttribute('aria-expanded', 'false');
-        btn.setAttribute('aria-controls', 'csche-nav');
-        btn.innerHTML = 'Menu';
-        // ensure the UL has an id for aria-controls
-        const ul = menuBar.querySelector('ul');
-        if (ul && !ul.id) ul.id = 'csche-nav';
-        // put the button at the right end of the header bar
-        header.appendChild(btn);
-        btn.addEventListener('click', () => {
-          const open = root.classList.toggle('nav-open');
-          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        });
-      }
-    } else {
-      root.classList.remove('nav-open');
-      if (btn) { btn.remove(); btn = null; }
-    }
-  }
-
-  setState();
-  window.addEventListener('resize', setState, { passive: true });
-})();
-</script>
-
-
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <img src="images/logochat.png" alt="CSChE Logo" class="logo" />
 
-      <!-- NEW: mobile-only U of T line -->
-      <div class="mobile-uoft" aria-hidden="true">
-        <span>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING:</span><br>
-        <span>UNIVERSITY OF TORONTO</span>
+  <csche-header></csche-header>
+
+  <main class="container">
+    <section>
+      <h2 style="border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; display: inline-block;">
+        Scholarships & Finance
+      </h2>
+      
+      <p style="margin-top: 1rem; color: #555; max-width: 800px;">
+        Explore scholarships and awards available to Chemical Engineering undergraduates. Many range from <strong>$500 to over $100,000</strong>. 
+        <br><br>
+        <strong>Tip:</strong> Keep your <a href="https://undergrad.engineering.utoronto.ca/fees-financial-aid/scholarships/" target="_blank" style="color: var(--primary); text-decoration: underline;">ePortfolio</a> updated for better chances.
+        <br>
+        Know of a scholarship not listed? Email us at <a href="mailto:csche@g.skule.ca" style="color: var(--primary); font-weight: bold;">csche@g.skule.ca</a>.
+      </p>
+
+      <div>
+        <button class="toggle-btn">
+          Open to All Years 
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="toggle-content">
+          <div class="table-wrapper">
+            <table class="pd-table" style="margin-top:0; border:none; box-shadow:none;">
+              <thead>
+                <tr><th>Scholarship / Award</th><th>Requirements</th><th>Value</th><th>Recipient(s)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>ASEE Student Video Contest</td><td>Undergraduate Student</td><td>$3,000 USD</td><td>Alicia Hill-Turner</td></tr>
+                <tr><td>Dr Irving H Spinner Scholarship</td><td>Undergraduate Student</td><td>$4,500–5,200</td><td>—</td></tr>
+                <tr><td>Engineering Society Award</td><td>Undergraduate Student</td><td>$4,200–4,500</td><td>—</td></tr>
+                <tr><td>Iyiope Jibodu Scholarship</td><td>Undergraduate Student</td><td>$200–500</td><td>—</td></tr>
+                <tr><td>J. Edgar McAllister Foundation</td><td>Undergraduate Student</td><td>$500–5,000</td><td>—</td></tr>
+                <tr><td>Jeffrey Skoll Scholarships</td><td>Eng. Business Minor</td><td>$10,000</td><td>—</td></tr>
+                <tr><td>Otegbade Scholarship</td><td>Student from Africa</td><td>$800–1,000</td><td>—</td></tr>
+                <tr><td>NSERC Student Ambassadors</td><td>STEM Outreach</td><td>$1,000–5,000</td><td>—</td></tr>
+                <tr><td>SPE General Scholarship</td><td>Energy Sector Interest</td><td>$2,500</td><td>—</td></tr>
+                <tr><td>Generation Google Scholarship</td><td>Computer-based degree</td><td>$5k–10k</td><td>—</td></tr>
+                <tr><td>Dorothy Meldrum Szymaszek Fund</td><td>Undergrad or Grad</td><td>$10,000</td><td>—</td></tr>
+                <tr><td>Engineering Alumni Network</td><td>Proceeding to 2nd-4th</td><td>$800–1,000</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
 
-      <div class="header-text">
-        <h1>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING</h1>
-        <h2>UNIVERSITY OF TORONTO CHAPTER</h2>
+      <div>
+        <button class="toggle-btn">
+          1st Year Awards
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="toggle-content">
+          <div class="table-wrapper">
+            <table class="pd-table" style="margin-top:0; border:none; box-shadow:none;">
+              <thead>
+                <tr><th>Scholarship / Award</th><th>Requirements</th><th>Value</th><th>Recipient(s)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Engineering Class of 5T6 Award†</td><td>1st Year Student</td><td>$14,000–17,000</td><td>—</td></tr>
+                <tr><td>ChemE Undergraduate Scholarship†</td><td>1st–3rd Year</td><td>$5,000</td><td>Judy Xia</td></tr>
+                <tr><td>ChemE Summer Fellowship*</td><td>1st–3rd Year</td><td>$5,000</td><td>—</td></tr>
+                <tr><td>Johannes Michael Holmboe Fellowship*</td><td>1st–3rd Year</td><td>$4,500–4,700</td><td>—</td></tr>
+                <tr><td>William J. Dowkes Grant (x2)*</td><td>1st–3rd Year</td><td>$5,000</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-    </div>
-  </header>
-  <!-- NAV -->
-  <nav class="main-menu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li>
-        <a href="whatwedo.html">What We Do</a>
-        <ul class="dropdown">
-          <li><a href="pd.html">Professional Development</a></li>
-          <li><a href="industry.html">Industry Mentorship</a></li>
-          <li><a href="outreach.html">Outreach Events</a></li>
-        </ul>
-      </li>
-      <li><a href="ccec.html">CCEC</a></li>
-      <li>
-        <a href="opportunities.html">Opportunities</a>
-        <ul class="dropdown">
-          <li><a href="scholarships.html">Scholarships</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="pey.html">PEY</a></li>
-        </ul>
-      </li>
-      <li><a href="team.html">Meet the Team</a></li>
-      <li><a href="contactus.html">Contact Us</a></li>
-    </ul>
-  </nav>
 
-  <!-- PAGE CONTENT -->
-<section class="pd-events">
-  <h2>Scholarships</h2>
+      <div>
+        <button class="toggle-btn">
+          2nd Year Awards
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="toggle-content">
+          <div class="table-wrapper">
+            <table class="pd-table" style="margin-top:0; border:none; box-shadow:none;">
+              <thead>
+                <tr><th>Scholarship / Award</th><th>Requirements</th><th>Value</th><th>Recipient(s)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Class of 8T2 Emerging Leaders</td><td>2nd Year Student</td><td>~$5,000</td><td>Fletcher Han</td></tr>
+                <tr><td>Prof James W. Smith Leaders Award</td><td>2nd Year Student</td><td>~$5,000</td><td>Judy Xia</td></tr>
+                <tr><td>Class of 5T0 Leadership Award†</td><td>Proceeding to 2nd</td><td>$7,000–7,500</td><td>—</td></tr>
+                <tr><td>Engineering 8T4 Leadership Award†</td><td>2nd–4th Year</td><td>$1,900–2,200</td><td>—</td></tr>
+                <tr><td>John Karl Hergovich Memorial†</td><td>Proceeding to 2nd–4th</td><td>$2,000–2,500</td><td>—</td></tr>
+                <tr><td>Oluwatobi “Tobi” Edun Scholarship†</td><td>Proceeding to 2nd–4th</td><td>$2,500</td><td>—</td></tr>
+                <tr><td>Ontario Power Generation Award†</td><td>Proceeding to 2nd</td><td>$2,400</td><td>—</td></tr>
+                <tr><td>Paul Santerre BioMed Legacy (x2)†</td><td>2nd–4th Year</td><td>$1,500</td><td>—</td></tr>
+                <tr><td>Faculty Leadership Award(s)†</td><td>2nd–4th Year</td><td>$3,500–4,000</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
-  <p class="pd-intro">
-    Explore scholarships and awards available to Chemical Engineering undergraduates. Many range from <strong>$500 to over $100,000</strong>. Connect with past recipients for advice and keep your
-    <a href="https://undergrad.engineering.utoronto.ca/fees-financial-aid/scholarships/" target="_blank">ePortfolio</a> updated for better chances.
-  </p>
-  <p class="pd-intro">
-    Know of a scholarship not listed or are a past recipient willing to share your experience? Email us at <a href="mailto:csche@skule.ca">csche@skule.ca</a>.
-  </p>
+      <div>
+        <button class="toggle-btn">
+          3rd Year Awards
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="toggle-content">
+          <div class="table-wrapper">
+            <table class="pd-table" style="margin-top:0; border:none; box-shadow:none;">
+              <thead>
+                <tr><th>Scholarship / Award</th><th>Requirements</th><th>Value</th><th>Recipient(s)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>5T3 (1953) Engineering Award†</td><td>3rd Year Student</td><td>$32,671</td><td>—</td></tr>
+                <tr><td>Ann & Myrtle Bumgardner Scholarship†</td><td>Proceeding to 3rd/4th</td><td>$800–1,000</td><td>Alicia Hill-Turner</td></tr>
+                <tr><td>ChemE Alumni In-Course Awards (x2)†</td><td>2nd/3rd Year</td><td>$4,000–4,200</td><td>—</td></tr>
+                <tr><td>Class of 5T9 Leaders of Tomorrow</td><td>3rd Year Student</td><td>~$7,500+</td><td>Fletcher Han</td></tr>
+                <tr><td>Class of 9T7 Award†</td><td>Proceeding to 3rd</td><td>$3,500–3,700</td><td>—</td></tr>
+                <tr><td>C. William Daniel Leadership (x3)†</td><td>Proceeding to 3rd/4th</td><td>$4,200–4,500</td><td>—</td></tr>
+                <tr><td>Enbridge Scholarship†</td><td>Proceeding to 3rd</td><td>$4,000–4,500</td><td>—</td></tr>
+                <tr><td>Eric Miglin Scholarship†</td><td>3rd Year Student</td><td>$1,400–1,600</td><td>—</td></tr>
+                <tr><td>Scrymgeour Scholarship†</td><td>3rd Year, Business Minor</td><td>$13k–15k</td><td>—</td></tr>
+                <tr><td>Paul Wilde - ChemE 7T8 Award†</td><td>2nd–4th Year</td><td>$800–1,100</td><td>—</td></tr>
+                <tr><td>ERCO Worldwide Leaders Award</td><td>3rd–4th Year</td><td>~$6,000+</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
-  <!-- Open to All Years -->
-  <div class="scholarship-group">
-    <button class="toggle-btn">▶ Open to All</button>
-    <div class="hidden">
-      <table class="pd-table">
-        <thead>
-          <tr><th>Scholarship / Award</th><th>Requirements</th><th>Value</th><th>Recipient(s)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>ASEE Student Video Contest</td><td>Undergraduate Student</td><td>$3,000 USD</td><td>Alicia Hill-Turner</td></tr>
-          <tr><td>Dr Irving H Spinner Scholarship in Chemical Engineering and Applied Chemistry</td><td>Undergraduate Student</td><td>$4,500–5,200</td><td>—</td></tr>
-          <tr><td>Engineering Society Award</td><td>Undergraduate Student</td><td>$4,200–4,500</td><td>—</td></tr>
-          <tr><td>Iyiope Jibodu Scholarship in Communication</td><td>Undergraduate Student</td><td>$200–500</td><td>—</td></tr>
-          <tr><td>J. Edgar McAllister Foundation Student Awards Program</td><td>Undergraduate Student</td><td>$500–5,000</td><td>—</td></tr>
-          <tr><td>Jeffrey Skoll Scholarships</td><td>Undergraduate pursuing Engineering Business Minor</td><td>$10,000</td><td>—</td></tr>
-          <tr><td>Otegbade Scholarship for Students from Africa</td><td>Undergraduate Student from Africa</td><td>$800–1,000</td><td>—</td></tr>
-          <tr><td>NSERC Student Ambassadors</td><td>Sharing underrepresented STEM experiences with youth/indigenous communities</td><td>$1,000–5,000</td><td>—</td></tr>
-          <tr><td>SPE General Scholarship</td><td>SPE members full-time diploma/degree program in energy sector</td><td>$2,500</td><td>—</td></tr>
-          <tr><td>Generation Google Scholarship (North America)</td><td>Computer-based degree</td><td>$10,000 USD / $5,000 CAD</td><td>—</td></tr>
-          <tr><td>Dorothy Meldrum Szymaszek Student Exchange Fund</td><td>Undergrad or Grad Student</td><td>$10,000</td><td>—</td></tr>
-          <tr><td>Engineering Alumni Network Scholarship</td><td>Proceeding to 2nd/3rd/4th Year</td><td>$800–1,000</td><td>—</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+      <div>
+        <button class="toggle-btn">
+          4th Year Awards
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="toggle-content">
+          <div class="table-wrapper">
+            <table class="pd-table" style="margin-top:0; border:none; box-shadow:none;">
+              <thead>
+                <tr><th>Scholarship / Award</th><th>Requirements</th><th>Value</th><th>Recipient(s)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>3T5 Second Mile Award</td><td>4th Year Student</td><td>$7,849</td><td>Rahemeen Ahmed</td></tr>
+                <tr><td>iLead Difference Maker Award</td><td>4th Year Student</td><td>~$50,000</td><td>—</td></tr>
+                <tr><td>Class of 4T3 James Ham Award†</td><td>Proceeding to 3rd/4th</td><td>$10k–11k</td><td>—</td></tr>
+                <tr><td>TELUS Diversity in Technology</td><td>Proceeding to 4th</td><td>$5k + Job</td><td>Alicia Hill-Turner</td></tr>
+                <tr><td>Troost Family Leaders Award</td><td>4th Year Student</td><td>~$6,000+</td><td>Anton Meier</td></tr>
+                <tr><td>PEY Co-op Student of the Year</td><td>Former PEY Student</td><td>Award</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
-  <!-- 1st Year -->
-  <div class="scholarship-group">
-    <button class="toggle-btn">▶ 1st Year</button>
-    <div class="hidden">
-      <table class="pd-table">
-        <thead>
-          <tr><th>Scholarship / Award</th><th>Requirements</th><th>Value</th><th>Recipient(s)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Engineering Class of 5T6 Award of Merit†</td><td>1st Year Student</td><td>$14,000–17,000</td><td>—</td></tr>
-          <tr><td>Chemical Engineering Undergraduate Scholarship†</td><td>1st–3rd Year</td><td>$5,000</td><td>Judy Xia</td></tr>
-          <tr><td>Chemical Engineering Undergraduate Summer Fellowship*</td><td>1st–3rd Year</td><td>$5,000</td><td>—</td></tr>
-          <tr><td>Johannes Michael Holmboe Undergraduate Summer Research Fellowship*</td><td>1st–3rd Year</td><td>$4,500–4,700</td><td>—</td></tr>
-          <tr><td>William J. Dowkes Undergraduate Summer Research Grant (x2)*</td><td>1st–3rd Year</td><td>$5,000</td><td>—</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+      <div>
+        <button class="toggle-btn">
+          Graduating Students
+          <span class="toggle-icon">+</span>
+        </button>
+        <div class="toggle-content">
+          <div class="table-wrapper">
+            <table class="pd-table" style="margin-top:0; border:none; box-shadow:none;">
+              <thead>
+                <tr><th>Scholarship / Award</th><th>Requirements</th><th>Value</th><th>Recipient(s)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Rhodes Scholarship</td><td>UofT Endorsement</td><td>~$100k+</td><td>Stephanie Gaglione</td></tr>
+                <tr><td>Schwarzman Scholarship</td><td>Graduating Undergrad</td><td>~$100k+</td><td>Fletcher Han</td></tr>
+                <tr><td>U of T Student Leader Award (UTSLA)</td><td>Graduating Undergrad</td><td>Award</td><td>Alicia H-T, Fletcher H</td></tr>
+                <tr><td>Loumankis Family Scholarship†</td><td>Graduating Undergrad</td><td>$2,500</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
-  <!-- 2nd Year -->
-  <div class="scholarship-group">
-    <button class="toggle-btn">▶ 2nd Year</button>
-    <div class="hidden">
-      <table class="pd-table">
-        <thead>
-          <tr><th>Scholarship / Award</th><th>Requirements</th><th>Value</th><th>Recipient(s)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Class of 8T2 Emerging Leaders Award in ChemE</td><td>2nd Year Student</td><td>~$5,000</td><td>Fletcher Han</td></tr>
-          <tr><td>Professor James W. Smith Leaders of Tomorrow Award</td><td>2nd Year Student</td><td>~$5,000</td><td>Judy Xia</td></tr>
-          <tr><td>Class of 5T0 Engineering Leadership Award†</td><td>Proceeding to 2nd Year</td><td>$7,000–7,500</td><td>—</td></tr>
-          <tr><td>Engineering 8T4 Leadership Award†</td><td>2nd–4th Year</td><td>$1,900–2,200</td><td>—</td></tr>
-          <tr><td>John Karl Hergovich Memorial Scholarship†</td><td>Proceeding to 2nd–4th Year</td><td>$2,000–2,500</td><td>—</td></tr>
-          <tr><td>Oluwatobi “Tobi” Edun Scholarship†</td><td>Proceeding to 2nd–4th Year</td><td>$2,500</td><td>—</td></tr>
-          <tr><td>Ontario Power Generation Award†</td><td>Proceeding to 2nd Year, employment equity target group</td><td>$2,400</td><td>—</td></tr>
-          <tr><td>Paul Santerre Undergraduate Biomedical Engineering Legacy Scholarship (x2)†</td><td>2nd–4th Year</td><td>$1,500</td><td>—</td></tr>
-          <tr><td>Faculty of Applied Science & Engineering Leadership Award(s)†</td><td>2nd–4th Year</td><td>$3,500–4,000</td><td>—</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <!-- 3rd Year -->
-  <div class="scholarship-group">
-    <button class="toggle-btn">▶ 3rd Year</button>
-    <div class="hidden">
-      <table class="pd-table">
-        <thead>
-          <tr><th>Scholarship / Award</th><th>Requirements</th><th>Value</th><th>Recipient(s)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>5T3 (1953) Engineering Award†</td><td>3rd Year Student</td><td>$32,671.52</td><td>—</td></tr>
-          <tr><td>Ann & Myrtle Bumgardner Scholarship in ChemE†</td><td>Proceeding to 3rd/4th Year</td><td>$800–1,000</td><td>Alicia Hill-Turner</td></tr>
-          <tr><td>Chemical Engineering Alumni In-Course Awards (x2)†</td><td>2nd/3rd Year</td><td>$4,000–4,200</td><td>—</td></tr>
-          <tr><td>Class of 5T9 Leaders of Tomorrow Award</td><td>3rd Year Student</td><td>~$7,500+</td><td>Fletcher Han</td></tr>
-          <tr><td>Class of 9T7 Award†</td><td>Proceeding to 3rd Year</td><td>$3,500–3,700</td><td>—</td></tr>
-          <tr><td>C. William Daniel Leadership Awards (x3)†</td><td>Proceeding to 3rd/4th Year</td><td>$4,200–4,500</td><td>—</td></tr>
-          <tr><td>Enbridge Scholarship in Engineering†</td><td>Proceeding to 3rd Year</td><td>$4,000–4,500</td><td>—</td></tr>
-          <tr><td>Eric Miglin Scholarship†</td><td>3rd Year Student</td><td>$1,400–1,600</td><td>—</td></tr>
-          <tr><td>Scrymgeour Scholarship in Engineering Entrepreneurship†</td><td>3rd Year, Engineering Business Minor</td><td>$13,000–15,000</td><td>—</td></tr>
-          <tr><td>Paul Wilde - ChemE 7T8 Award†</td><td>2nd–4th Year</td><td>$800–1,100</td><td>—</td></tr>
-          <tr><td>ERCO Worldwide Leaders of Tomorrow Award</td><td>3rd–4th Year</td><td>~$6,000+</td><td>—</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <csche-footer></csche-footer>
 
-  <!-- 4th Year -->
-  <div class="scholarship-group">
-    <button class="toggle-btn">▶ 4th Year</button>
-    <div class="hidden">
-      <table class="pd-table">
-        <thead>
-          <tr><th>Scholarship / Award</th><th>Requirements</th><th>Value</th><th>Recipient(s)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>3T5 Second Mile Award</td><td>4th Year Student</td><td>$7,849</td><td>Rahemeen Ahmed</td></tr>
-          <tr><td>iLead Difference Maker Award</td><td>4th Year Student</td><td>~$50,000</td><td>—</td></tr>
-          <tr><td>Class of 4T3 Engineering James Ham Award†</td><td>Proceeding to 3rd/4th Year</td><td>$10,000–11,000</td><td>—</td></tr>
-          <tr><td>TELUS Diversity in Technology Award</td><td>Proceeding to 4th Year (minority/female)</td><td>$5,000 + full-time offer</td><td>Alicia Hill-Turner</td></tr>
-          <tr><td>The Troost Family Leaders of Tomorrow Award</td><td>4th Year Student</td><td>~$6,000+</td><td>Anton Meier</td></tr>
-          <tr><td>PEY Co-op Student of the Year Award</td><td>Former PEY Student</td><td>None</td><td>—</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- Graduating -->
-  <div class="scholarship-group">
-    <button class="toggle-btn">▶ Graduating</button>
-    <div class="hidden">
-      <table class="pd-table">
-        <thead>
-          <tr><th>Scholarship / Award</th><th>Requirements</th><th>Value</th><th>Recipient(s)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Rhodes Scholarship</td><td>Graduating Undergraduate, UofT Endorsement</td><td>~$100,000+</td><td>Stephanie Gaglione</td></tr>
-          <tr><td>Schwarzman Scholarship</td><td>Graduating Undergraduate</td><td>~$100,000+</td><td>Fletcher Han</td></tr>
-          <tr><td>University of Toronto Student Leader Award (UTSLA)</td><td>Graduating Undergraduate</td><td>None</td><td>Alicia Hill-Turner, Fletcher Han</td></tr>
-          <tr><td>Loumankis Family Engineering Scholarship†</td><td>Graduating Undergraduate Student</td><td>$2,500</td><td>—</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<script>
-  document.querySelectorAll('.toggle-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const content = btn.nextElementSibling;
-      content.classList.toggle('hidden');
-      btn.textContent = content.classList.contains('hidden') ? "▶ " + btn.textContent.slice(2) : "▼ " + btn.textContent.slice(2);
+  <script>
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Toggle the 'active' class on the button (for color change)
+        btn.classList.toggle('active');
+        
+        // Find the content div
+        const content = btn.nextElementSibling;
+        content.classList.toggle('show');
+        
+        // Change the icon from + to -
+        const icon = btn.querySelector('.toggle-icon');
+        icon.textContent = content.classList.contains('show') ? '−' : '+';
+      });
     });
-  });
-</script>
-
-<footer class="footer">
-    <p>Connect with us:</p>
-    <div class="social-icons">
-      <a href="https://instagram.com/csche_uoft" target="_blank"><img src="images/instagram.webp" alt="Instagram" /></a>
-      <a href="https://www.linkedin.com/company/cscheuoft/" target="_blank"><img src="images/linkedin.webp" alt="LinkedIn" /></a>
-    </div>
-  </footer>
+  </script>
 
 </body>
 </html>

@@ -3,165 +3,125 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Professional Development | CSChE UofT</title>
+  <title>Community Outreach | CSChE UofT</title>
+  <meta name="description" content="Community building events for UofT Chemical Engineering students: Chem Week, Candy Grams, and Social Mixers." />
+  <link rel="icon" type="image/png" href="images/logochat.png">
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/tabletop@1.6.0/tabletop.min.js"></script>
-</head>
+  <script src="main.js" defer></script>
 
-<body>
-  <!-- SAME HEADER -->
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <img src="images/logochat.png" alt="CSChE Logo" class="logo" />
-
-      <!-- NEW: mobile-only U of T line -->
-      <div class="mobile-uoft" aria-hidden="true">
-        <span>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING:</span><br>
-        <span>UNIVERSITY OF TORONTO</span>
-      </div>
-
-      <div class="header-text">
-        <h1>CANADIAN SOCIETY FOR CHEMICAL ENGINEERING</h1>
-        <h2>UNIVERSITY OF TORONTO CHAPTER</h2>
-      </div>
-    </div>
-  </header>
-
-  <!-- SAME NAVIGATION -->
-  <nav class="main-menu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li>
-        <a href="whatwedo.html">What We Do</a>
-        <ul class="dropdown">
-          <li><a href="pd.html">Professional Development</a></li>
-          <li><a href="industry.html">Industry Mentorship</a></li>
-          <li><a href="outreach.html">Outreach Events</a></li>
-        </ul>
-      </li>
-      <li><a href="ccec.html">CCEC</a></li>
-      <li>
-        <a href="opportunities.html">Opportunities</a>
-        <ul class="dropdown">
-          <li><a href="scholarships.html">Scholarships</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="pey.html">PEY</a></li>
-        </ul>
-      </li>
-      <li><a href="team.html">Meet the Team</a></li>
-      <li><a href="contactus.html">Contact Us</a></li>
-    </ul>
-  </nav>
-
-    <section class="pd-events">
-  <h2>Community Outreach Events</h2>
-  <table class="pd-table">
-    <tbody>
-      <tr>
-        <td class="event-info">
-          <strong>Chem Week</strong>
-          <p>Every year, CSChE organizes a week packed full of events called Chem Week. This week is dedicated to celebrating 
-            the chemical engineering community, balancing social programming with academic and professional development-focused 
-            events. Events include the Graduate-Undergraduate Student Mixer, which provides undergraduates with the opportunity 
-            to learn about graduate school and research opportunities, and the Troost Cup, a leadership and community building
-            event sponsored by the Troost family (the current owners of Peel Plastics).
-          </p>
-        </td>
-        <td class="event-image">
-          <img src="images/symposium.png" alt="Symposium" />
-        </td>
-      </tr>
-
-      <tr>
-        <td class="event-info">
-          <strong>Candy Grams</strong>
-          <p> Every year during Valentine’s Day, it is tradition for CSChE to make and sell candy grams to the 
-            chemical engineering community. We run this initiative to bring the student body together with some 
-            light-hearted chemical engineering puns and a side of sweets. 
-          </p>
-        </td>
-        <td class="event-image">
-          <img src="images/planttour.jpg" alt="Plant Tour" />
-        </td>
-      </tr>
-
-    <tr>
-        <td class="event-info">
-          <strong>Sector Info Night</strong>
-          <p>Each year we invite alumni from the Chemical Engineering Department to speak with current undergraduates about their careers and how studying chemical engineering at U of T has helped them in their professional endeavours. Companies represented include Hatch, KPMG, AtkinsRealis, Li-Cycle, and McKinsey & Company.
-          </p>
-        </td>
-        <td class="event-image">
-          <img src="images/sector.HEIC" alt="Sector Info Night" />
-        </td>
-      </tr>
-</tbody>
-</table>
-</section>
-
-
-   <!-- SAME FOOTER -->
-  <footer class="footer">
-    <p>Connect with us:</p>
-    <div class="social-icons">
-      <a href="https://instagram.com/csche_uoft" target="_blank"><img src="images/instagram.webp" alt="Instagram" /></a>
-      <a href="https://www.linkedin.com/company/cscheuoft/" target="_blank"><img src="images/linkedin.webp" alt="LinkedIn" /></a>
-    </div>
-  </footer>
-
-<script>
-(function () {
-  const bp = 768;
-  const root   = document.documentElement;
-  const header = document.querySelector('.header-container');
-  const menuBar= document.querySelector('.main-menu');
-  const list   = menuBar ? menuBar.querySelector('ul') : null;
-
-  // If the DOM isn't ready, try again after load
-  if (!header || !menuBar || !list) {
-    window.addEventListener('DOMContentLoaded', init, { once: true });
-  } else {
-    init();
-  }
-
-  function init() {
-    const headerEl = document.querySelector('.header-container');
-    const menuEl   = document.querySelector('.main-menu');
-    const ul       = menuEl ? menuEl.querySelector('ul') : null;
-    if (!headerEl || !menuEl || !ul) return; // leave desktop/menu intact
-
-    root.classList.add('nav-ready');          // enables mobile dropdown CSS
-    if (!ul.id) ul.id = 'csche-nav';
-
-    let btn;
-
-    function mount() {
-      if (window.innerWidth <= bp) {
-        if (!btn) {
-          btn = document.createElement('button');
-          btn.className = 'menu-toggle';
-          btn.setAttribute('aria-expanded', 'false');
-          btn.setAttribute('aria-controls', ul.id);
-          // three-bar hamburger
-          btn.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
-          headerEl.appendChild(btn);
-          btn.addEventListener('click', () => {
-            const open = root.classList.toggle('nav-open');
-            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-          });
-        }
-      } else {
-        root.classList.remove('nav-open');
-        if (btn) { btn.remove(); btn = null; }
-      }
+  <style>
+    /* 1. Card Container */
+    .event-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid #eee;
     }
 
-    mount();
-    window.addEventListener('resize', mount, { passive: true });
-  }
-})();
-</script>
+    /* 2. Text Area */
+    .event-info {
+      flex: 1;
+    }
+    .event-info h3 {
+      color: var(--primary);
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    /* 3. Image Area - Fixed Size */
+    .event-image {
+      flex: 0 0 300px; /* Fixed width on desktop */
+    }
+
+    /* 4. Image Styling - Uniform Crop */
+    .event-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover; /* Prevents stretching */
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid #eee;
+    }
+
+    /* 5. Mobile Layout */
+    @media (max-width: 768px) {
+      .event-row {
+        flex-direction: column-reverse; /* Image on top */
+        gap: 1rem;
+        padding: 2rem 0;
+      }
+      .event-image {
+        flex: auto;
+        width: 100%;
+      }
+      .event-image img {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <csche-header></csche-header>
+
+  <main class="container">
+    <section>
+      <h2 style="border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; display: inline-block;">
+        Community Outreach Events
+      </h2>
+      <p style="max-width: 800px; margin-bottom: 1rem; margin-top: 1rem; color: #555;">
+        We believe in building a strong community. From social mixers to holiday traditions, these events bring students, faculty, and alumni together.
+      </p>
+
+      <article class="event-row">
+        <div class="event-info">
+          <h3>Chem Week</h3>
+          <p>
+            Every year, CSChE organizes a week packed full of events called Chem Week. This week is dedicated to celebrating the chemical engineering community, balancing social programming with academic and professional development.
+            <br><br>
+            <strong>Highlights:</strong> The Graduate-Undergraduate Student Mixer (learning about grad school/research) and the Troost Cup (leadership event sponsored by the Troost family/Peel Plastics).
+          </p>
+        </div>
+        <div class="event-image">
+          <img src="images/symposium.png" alt="Chem Week Events" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="event-row">
+        <div class="event-info">
+          <h3>Candy Grams</h3>
+          <p>
+            Every Valentine’s Day, it is tradition for CSChE to make and sell candy grams to the chemical engineering community. 
+            <br><br>
+            We run this initiative to bring the student body together with some light-hearted chemical engineering puns and a side of sweets.
+          </p>
+        </div>
+        <div class="event-image">
+          <img src="images/planttour.jpg" alt="Candy Grams Distribution" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="event-row" style="border-bottom: none;">
+        <div class="event-info">
+          <h3>Sector Info Night</h3>
+          <p>
+            Each year we invite alumni from the Chemical Engineering Department to speak with current undergraduates about their careers and how studying at U of T helped them.
+            <br><br>
+            <strong>Companies represented:</strong> Hatch, KPMG, AtkinsRealis, Li-Cycle, and McKinsey & Company.
+          </p>
+        </div>
+        <div class="event-image">
+          <img src="images/sector.HEIC" onerror="this.src='images/car6.png'" alt="Sector Info Night" loading="lazy" />
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <csche-footer></csche-footer>
 
 </body>
 </html>
